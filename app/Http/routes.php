@@ -17,14 +17,13 @@
 
 Route::group(['middleware'=>'web'],function(){
 
+    Route::auth();
 
     Route::group(['middleware'=>'auth'],function(){
 
         Route::get('/', 'HomeController@index');
 
     });
-
-    Route::auth();
 
 });
 

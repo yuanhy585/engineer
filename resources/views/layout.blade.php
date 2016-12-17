@@ -13,13 +13,13 @@
 </head>
 <body>
 
-<div class="page-bar" style="padding-left:100px;height:40px;line-height: 40px;">
-    contact:123@163.com
-    <span style="float:right;padding-right:100px;"><a href="">中文</a>|<a href="">English</a></span>
+{{--<div class="page-bar" style="padding-left:100px;height:40px;line-height: 40px;">--}}
+    {{--contact:123@163.com--}}
+    {{--<span style="float:right;padding-right:100px;"><a href="">中文</a>|<a href="">English</a></span>--}}
     {{--<div class="col-md-offset-6"><a href="">中文</a>|<a href="">English</a></div>--}}
-</div>
+{{--</div>--}}
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:40px;">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -53,10 +53,12 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                @if(Auth::guest())
-                    <li><a href="{{url('/login')}}">登录</a></li>    <! why can't i simply write href="/login"? can't approach the route!>
-                    <li><a href="{{url('/register')}}">注册</a></li>
-                @else
+                <li><a href="">中文</a></li>
+                {{--<li>|</li>--}}
+                <li><a href="">English</a></li>
+            @if(! Auth::guest())
+                    {{--<li><a href="{{url('/login')}}">登录</a></li>    <! why can't i simply write href="/login"? can't approach the route!>--}}
+                    {{--<li><a href="{{url('/register')}}">注册</a></li>--}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
