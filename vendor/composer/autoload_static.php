@@ -292,10 +292,12 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
 
     public static $classMap = array (
         'AddColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+        'CreateDepartmentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_18_060815_create_departments_table.php',
         'CreateLanguagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_071325_create_languages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'DepartmentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DepartmentTableSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
