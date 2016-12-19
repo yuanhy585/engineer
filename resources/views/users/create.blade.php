@@ -3,27 +3,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form role="form" class="form-group" action="/users">
+            <form role="form" class="form-group" method="post" action="/users">
+
+                {{csrf_field()}}
                 {{trans('user.title')}}:
-                <input type="text" class="form-control" name="username"><br/>
-                {{trans('user.real_name')}}:
-                <input type="text" class="form-control" name="realname"><br/>
+                <input type="text" class="form-control" name="name"><br/>
+                {{trans('user.email')}}:
+                <input type="email" class="form-control" name="email"><br/>
                 {{trans('user.language')}}:
-                <select class="form-control">
-                    <option name="language_id" value="{{Auth::user()->language_id}}">
-                        {{Auth::user()->language->title}}
-                    </option>
-                </select><br/>
-                {{trans('user.department')}}:
-                <select class="form-control">
-                    @foreach($departments as $department)
-                        <option name="department_id" value="{{$department->id}}">
-                            {{$department->title}}
+                <select name="language_id" class="form-control">
+                    @foreach($languages as $id=>$title)
+                        <option name="language_id" value="{{$id}}">
+                            {{$title}}
                         </option>
                     @endforeach
                 </select>
                 <br/>
-                <button class="btn btn-info">{{trans('user.submit')}}</button>
+                {{trans('user.department')}}:
+                <select name="department_id" class="form-control">
+                    @foreach($departments as $id=>$title)
+                        <option name="department_id" value="{{$id}}">
+                            {{$title}}
+                        </option>
+                    @endforeach
+                </select>
+                <br/>
+                <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
                 <button class="btn btn-danger">{{trans('user.cancel')}}</button>
             </form>
         </div>
