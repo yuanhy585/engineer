@@ -82,4 +82,23 @@ class UserController extends Controller
         return view('users.edit',compact('user','departments','languages'));
     }
 
+    public function update(Request $request, $id)
+    {
+        $user = User::where('id',$id)->first();
+        $emails = User::all()->pluck('email')->toArray();
+
+        $inputs = $request->all();
+        if(in_array($inputs['email'],$emails))
+        {
+            return Redirect::back()->withErrors(['email'=>trans('user.error_tag')])->withInput();
+        }
+        $user->name = $inputs['name'];
+        $user->email = $inputs['email'];
+        $user->language_id = $inputs['language_id'];
+        $user->department_id = $inputs['department_id'];
+        $user->save();
+
+        return redirect('/users');
+    }
+
 }

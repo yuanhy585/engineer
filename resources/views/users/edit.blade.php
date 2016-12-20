@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form role="form" class="form-group" method="put" action="/users">
+                <form role="form" class="form-group" method="put" action="/users/{{$user->id}}/update">
 
                     {{csrf_field()}}
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
@@ -14,13 +14,14 @@
 
                     {{trans('user.email')}}:
                     <input type="email" class="form-control" name="email"
-                    value="{{$user->email}}"><br/>
+                    value="{{$user->email}}">
+                    {!! errors_for('email',$errors) !!}<br/>
 
                     {{trans('user.language')}}:
                     <select name="language_id" class="form-control">
                         @foreach($languages as $id=>$title)
                             <option name="language_id" value="{{$id}}">
-                                {{old($title)}}
+                                {{$title}}
                             </option>
                         @endforeach
                     </select>
@@ -37,7 +38,7 @@
                     <br/>
 
                     <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
-                    <button type="submit" class="btn btn-danger">{{trans('user.cancel')}}</button>
+                    <a class="btn btn-danger" href="/users/{{$user->id}}/edit">{{trans('user.cancel')}}</a>
                 </form>
             </div>
 
