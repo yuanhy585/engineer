@@ -24,7 +24,5 @@ return[
 
     'return'=>'返回',
     'error_tag'=>'该邮箱已存在，请使用其他邮箱注册',
-    'userlistfail'=>'人员名单获取失败',
-    'userlistget'=>'人员名单获取成功',
 
 ];

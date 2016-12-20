@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class UserAPIController extends Controller
 {
@@ -13,14 +14,17 @@ class UserAPIController extends Controller
     {
         $id = $request->get('id');
         $count = User::where('id',$id)->count();
+
+        Auth::loginUsingId($id);   // 登录后才可进行下面的操作，相当于过滤功能
         if($count==0)
         {
             $rtn = 101;
-            $message = "{{trans('user.userlistfail')}}";
+            $message = "人员名单获取失败";
             $response = ['code'=>$rtn,'message'=>$message,'data'=>[]];
         }
         else
         {
+
             $datas = array();
             $inputs = User::where('id',$id)->get();
             foreach($inputs as $user)
@@ -34,7 +38,7 @@ class UserAPIController extends Controller
             }
 
             $rtn = 100;
-            $message = "{{trans('user.userlistget')}}";
+            $message = "人员名单获取成功";
             $response = ['code'=>$rtn,'message'=>$message,'data'=>$datas];
         }
         return response()->json($response);
