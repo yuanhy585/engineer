@@ -4,11 +4,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <form role="form" class="form-inline" action="/users">
-                    <input type="text" class="form-control" name="findByUserName"
-                           placeholder="{{trans('user.placeholder')}}"
-                    value="{{isset($a['findByUserName'])?$a['findByUserName']:""}}" />
-                    <button type="submit" class="btn bg-primary">搜索</button>
+                <form role="form" action="/users">
+                    <select name="department_id" class="form-control">
+                        @foreach($departments as $id=>$title)
+                            <option name="department_id" value="{{isset($a['department_id'])?$a['department_id']:null}}">
+                                {{$title}}
+                            </option>
+                        @endforeach
+
+{{--                            {!! Form::select('department_id', $departments,isset($a['department_id'])?$a['department_id']:null,['class'=>"form-control"]) !!}--}}
+
+                    </select>
+                    <br/>
+                    <div class="form-inline">
+                        <input type="text" class="form-control" name="findByUserName"
+                               placeholder="{{trans('user.placeholder')}}"
+                               value="{{isset($a['findByUserName'])?$a['findByUserName']:""}}" />
+                        <button type="submit" class="btn bg-primary">搜索</button>
+                    </div>
                 </form>
             </div>
             <a class="btn btn-primary" href="/users/create" style="float:right;">

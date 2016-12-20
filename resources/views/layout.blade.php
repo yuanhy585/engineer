@@ -28,14 +28,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Engineer</a>
+            <a class="navbar-brand" href="">Engineer</a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if(Auth::user())
-                <li class="active"><a href="#">{{trans('home.home')}}</a></li>
-                <li><a href="users">{{trans('user.HR_management')}}</a></li>
+                <li class="active"><a href="">{{trans('home.home')}}</a></li>
+                <li><a href="/users">{{trans('user.HR_management')}}</a></li>
                 {{--<li><a href="#contact">Contact</a></li>--}}
                 <li class="dropdown">
                     <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>

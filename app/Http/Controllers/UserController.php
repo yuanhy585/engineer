@@ -28,14 +28,16 @@ class UserController extends Controller
                 $query->where('name','LIKE','%'.$inputs['findByUserName'].'%');
             }
         })
-//            ->orWhere(function($in) use ($inputs){
-//                if(isset($inputs['findByUserName'])){
-//                    $in->where('name','LIKE','%'.$inputs['findByUserName'].'%');
-//                }
-//            })
+            ->WhereHas('department',function ($in) use ($inputs){
+                if(isset($inputs['department_id']) && $inputs['department_id'] != 0)
+                {
+                    $in->where("department_id",$inputs['department_id']);
+                }
+            })
             ->paginate(5);
         $a = $inputs;
-        return view('users.index',compact('users','a'));
+        $departments = Department::all()->pluck('title','id');
+        return view('users.index',compact('users','a','departments'));
     }
 
     public function create()
@@ -49,6 +51,12 @@ class UserController extends Controller
     {
         $inputs = $request->all();
         //加过滤，邮箱唯一性
+        $user = User::where('email',$inputs['email'])->first();
+        if($user)
+        {
+            return Redirect::back()->withErrors(['email'=>trans('user.error_tag')])->withInput();
+        }
+
         $user = new User();
         $user->name = $inputs['name'];
         $user->email = $inputs['email'];
@@ -61,9 +69,17 @@ class UserController extends Controller
 
     public function show($id)
     {
-        error_log($id);
+//        error_log(only for string); dd for all types; console show
         $user = User::where('id',$id)->first();
         return view('users.show',compact('user'));
+    }
+
+    public function edit($id)
+    {
+        $user = User::where('id',$id)->first();
+        $departments = Department::all()->pluck('title','id');
+        $languages = Language::all()->pluck('title','id');
+        return view('users.edit',compact('user','departments','languages'));
     }
 
 }

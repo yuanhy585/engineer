@@ -22,6 +22,7 @@ return[
     'delete'=>'Delete',
 
     'return'=>'Return',
+    'error_tag'=>'This email address has already been used. Please register with a new one.',
 
 
 ];

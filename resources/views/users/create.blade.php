@@ -8,8 +8,12 @@
                 {{csrf_field()}}
                 {{trans('user.title')}}:
                 <input type="text" class="form-control" name="name"><br/>
+
                 {{trans('user.email')}}:
-                <input type="email" class="form-control" name="email"><br/>
+                <input type="email" class="form-control" name="email" >
+                {!! errors_for('email',$errors) !!}
+                <br/>
+
                 {{trans('user.language')}}:
                 <select name="language_id" class="form-control">
                     @foreach($languages as $id=>$title)
@@ -19,6 +23,7 @@
                     @endforeach
                 </select>
                 <br/>
+
                 {{trans('user.department')}}:
                 <select name="department_id" class="form-control">
                     @foreach($departments as $id=>$title)
@@ -29,7 +34,7 @@
                 </select>
                 <br/>
                 <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
-                <button class="btn btn-danger">{{trans('user.cancel')}}</button>
+                <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
             </form>
         </div>
 
