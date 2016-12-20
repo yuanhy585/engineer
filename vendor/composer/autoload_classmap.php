@@ -7,9 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddColumnsToUsersTable' => $baseDir . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+    'CreateCitiesTable' => $baseDir . '/database/migrations/2016_12_20_062540_create_cities_table.php',
     'CreateDepartmentsTable' => $baseDir . '/database/migrations/2016_12_18_060815_create_departments_table.php',
     'CreateLanguagesTable' => $baseDir . '/database/migrations/2016_12_16_071325_create_languages_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateProvincesTable' => $baseDir . '/database/migrations/2016_12_20_062525_create_provinces_table.php',
+    'CreateRegionsTable' => $baseDir . '/database/migrations/2016_12_20_062503_create_regions_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DepartmentTableSeeder' => $baseDir . '/database/seeds/DepartmentTableSeeder.php',
@@ -483,6 +486,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RegionTableSeeder' => $baseDir . '/database/seeds/RegionTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
