@@ -49,17 +49,18 @@
                                 <a href="/users/{{$user->id}}">{{$user->name}}</a>
                             </td>
                             <td>{{$user->email}}</td>
-                            @if($user->role_id == 1)
-                                <td>销售部</td>
-                            @elseif($user->role_id == 2)
-                                <td>管理部</td>
-                            @elseif($user->role_id == 3)
-                                <td>市场部</td>
-                            @elseif($user->role_id == 4)
-                                <td>工程部</td>
-                            @elseif($user->role_id == 5)
-                                <td>项目部</td>
-                            @endif
+                            <td>{{$user->department->title}}</td>
+                            {{--@if($user->role_id == 1)--}}
+                                {{--<td>销售部</td>--}}
+                            {{--@elseif($user->role_id == 2)--}}
+                                {{--<td>管理部</td>--}}
+                            {{--@elseif($user->role_id == 3)--}}
+                                {{--<td>市场部</td>--}}
+                            {{--@elseif($user->role_id == 4)--}}
+                                {{--<td>工程部</td>--}}
+                            {{--@elseif($user->role_id == 5)--}}
+                                {{--<td>项目部</td>--}}
+                            {{--@endif--}}
                             <td>
                                 <form class="form-inline">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

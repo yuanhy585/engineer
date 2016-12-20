@@ -38,7 +38,7 @@
                     <br/>
 
                     <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
-                    <a class="btn btn-danger" href="/users/{{$user->id}}/edit">{{trans('user.cancel')}}</a>
+                    <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
                 </form>
             </div>
 
