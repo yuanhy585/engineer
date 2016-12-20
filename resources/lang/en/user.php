@@ -23,6 +23,8 @@ return[
 
     'return'=>'Return',
     'error_tag'=>'This email address has already been used. Please register with a new one.',
+    'userlistfail'=>'Fail to get the user list.',
+    'userlistget'=>'Get the user list successfully.',
 
 
 ];

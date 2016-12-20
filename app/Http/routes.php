@@ -14,7 +14,11 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('users/{id}/delete','UserController@destroy');
 
     });
+});
 
+//API
+Route::group(['prefix'=>'api'],function (){
+    Route::get('userList','UserAPIController@getUserList');
 });
 
 
