@@ -66,7 +66,7 @@
                                     <input type="hidden" name="_method" value="DELETE">
 
                                     <a class="btn btn-primary" href="/users/{{$user->id}}/edit">{{trans('user.edit')}}</a>
-                                    <button class="btn btn-danger">{{trans('user.delete')}}</button>
+                                    <a class="btn btn-danger" href="/users/{{$user->id}}/delete">{{trans('user.delete')}}</a>
                                 </form>
                             </td>
                         </tr>

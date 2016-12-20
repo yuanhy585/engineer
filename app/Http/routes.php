@@ -11,6 +11,7 @@ Route::group(['middleware'=>'language'],function(){
 
         Route::resource('users','UserController');
         Route::get('users/{id}/update','UserController@update');
+        Route::get('users/{id}/delete','UserController@destroy');
 
     });
 

@@ -101,4 +101,12 @@ class UserController extends Controller
         return redirect('/users');
     }
 
+    public function destroy($id)
+    {
+        $user = User::where('id',$id)->first();
+        $user->delete();
+
+        return back();
+    }
+
 }
