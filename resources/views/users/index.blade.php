@@ -20,7 +20,7 @@
                         <input type="text" class="form-control" name="findByUserName"
                                placeholder="{{trans('user.placeholder')}}"
                                value="{{isset($a['findByUserName'])?$a['findByUserName']:""}}" />
-                        <button type="submit" class="btn bg-primary">搜索</button>
+                        <button type="submit" class="btn bg-primary">{{trans('user.search')}}</button>
                     </div>
                 </form>
             </div>
