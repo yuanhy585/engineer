@@ -30,7 +30,11 @@
                     {{trans('user.department')}}:
                     <select name="department_id" class="form-control">
                         @foreach($departments as $id=>$title)
-                            <option name="department_id" value="{{$id}}">
+                            <option name="department_id"
+                                    @if($title == $user_department)
+                                    selected
+                                    @endif
+                            value="{{$id}}">
                                 {{$title}}
                             </option>
                         @endforeach

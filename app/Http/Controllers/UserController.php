@@ -79,7 +79,9 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
         $departments = Department::all()->pluck('title','id');
         $languages = Language::all()->pluck('title','id');
-        return view('users.edit',compact('user','departments','languages'));
+        $user_department = User::where('id',$id)->first()->department->title;  //一般不这么用
+
+        return view('users.edit',compact('user','departments','languages','user_department'));
     }
 
     public function update(Request $request, $id)
@@ -88,14 +90,23 @@ class UserController extends Controller
         $emails = User::all()->pluck('email')->toArray();
 
         $inputs = $request->all();
-        if(in_array($inputs['email'],$emails))
+//        if(in_array($inputs['email'],$emails))
+//        {
+//            return Redirect::back()->withErrors(['email'=>trans('user.error_tag')])->withInput();
+//        }
+        if(isset($inputs['name']))
         {
-            return Redirect::back()->withErrors(['email'=>trans('user.error_tag')])->withInput();
+            $user->name = $inputs['name'];
         }
-        $user->name = $inputs['name'];
-        $user->email = $inputs['email'];
-        $user->language_id = $inputs['language_id'];
-        $user->department_id = $inputs['department_id'];
+//        $user->email = $inputs['email']; //不需要更改邮箱，就不用接收邮箱修改传递的值
+        if(isset($inputs['language_id']))
+        {
+            $user->language_id = $inputs['language_id'];
+        }
+        if(isset($inputs['department_id']))
+        {
+            $user->department_id = $inputs['department_id'];
+        }
         $user->save();
 
         return redirect('/users');

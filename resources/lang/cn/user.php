@@ -13,6 +13,7 @@ return[
     'confirmation_password'=>'密码确认',
     'HR_management'=>'人员管理',
     'placeholder'=>'请输入关键字查询',
+    'search'=>'搜索',
 
     'user_create'=>'创建新用户',
     'submit'=>'确认',

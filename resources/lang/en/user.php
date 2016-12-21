@@ -11,7 +11,7 @@ return[
     'confirmation_password'=>'Password Confirmation',
     'HR_management'=>'HR Management',
     'placeholder'=>'Input the Key Word for Query',
-
+    'search'=>'Search',
 
     'user_create'=>'Create User',
     'submit'=>'Submit',
