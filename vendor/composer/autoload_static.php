@@ -16,7 +16,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'c7a30ad2fd3d198cdc58d9fb1f8a7ed4' => __DIR__ . '/../..' . '/app/function.php',
+        'c7a30ad2fd3d198cdc58d9fb1f8a7ed4' => __DIR__ . '/../..',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -293,12 +293,16 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
 
     public static $classMap = array (
         'AddColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+        'ChannelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ChannelTableSeeder.php',
+        'CreateChannelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040912_create_channels_table.php',
         'CreateCitiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_062540_create_cities_table.php',
         'CreateDepartmentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_18_060815_create_departments_table.php',
         'CreateLanguagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_071325_create_languages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProvincesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_062525_create_provinces_table.php',
         'CreateRegionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_062503_create_regions_table.php',
+        'CreateShopLevelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040759_create_shop_levels_table.php',
+        'CreateShopsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040951_create_shops_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DepartmentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DepartmentTableSeeder.php',
@@ -809,6 +813,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
         'SebastianBergmann\\RecursionContext\\Exception' => __DIR__ . '/..' . '/sebastian/recursion-context/src/Exception.php',
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'ShopLevelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ShopLevelTableSeeder.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',

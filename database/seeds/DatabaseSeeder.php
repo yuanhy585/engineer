@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);
         $this->call(RegionTableSeeder::class);
+        $this->call(ShopLevelTableSeeder::class);
+        $this->call(ChannelTableSeeder::class);
 
     }
 

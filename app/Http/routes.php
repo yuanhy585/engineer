@@ -9,9 +9,13 @@ Route::group(['middleware'=>'language'],function(){
 
         Route::get('/', 'HomeController@index');
 
+        //routes for users
         Route::resource('users','UserController');
         Route::get('users/{id}/update','UserController@update');
         Route::get('users/{id}/delete','UserController@destroy');
+
+        //routes for shops
+        Route::resource('/shops','ShopController');
 
     });
 });
