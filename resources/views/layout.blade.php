@@ -34,9 +34,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if(Auth::user())
-                <li class="active"><a href="">{{trans('home.home')}}</a></li>
+                <li class="active"><a href="/">{{trans('home.home')}}</a></li>
                 <li><a href="/users">{{trans('user.HR_management')}}</a></li>
-                {{--<li><a href="#contact">Contact</a></li>--}}
+                <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
                 <li class="dropdown">
                     <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -76,7 +76,7 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top:150px;">
+<div class="container" style="margin-top:80px;">
     @yield('content')
 </div>
 

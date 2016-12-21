@@ -3,7 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div style="font-size: 30px; margin-bottom: 30px;">
+                {{trans('user.HR_management')}}<br/>
+            </div><hr/>
             <div class="col-md-3">
+                <div style="margin-bottom:20px;">
+                    <a class="btn btn-primary" href="/users/create">
+                        {{trans('user.user_create')}}
+                    </a>
+                </div>
                 <form role="form" action="/users">
                     <select name="department_id" class="form-control">
                         @foreach($departments as $id=>$title)
@@ -11,9 +19,7 @@
                                 {{$title}}
                             </option>
                         @endforeach
-
 {{--                            {!! Form::select('department_id', $departments,isset($a['department_id'])?$a['department_id']:null,['class'=>"form-control"]) !!}--}}
-
                     </select>
                     <br/>
                     <div class="form-inline">
@@ -24,9 +30,6 @@
                     </div>
                 </form>
             </div>
-            <a class="btn btn-primary" href="/users/create" style="float:right;">
-                {{trans('user.user_create')}}
-            </a>
         </div>
         <br/><br/>
     {{--</div>--}}
