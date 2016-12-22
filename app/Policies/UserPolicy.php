@@ -35,6 +35,7 @@ class UserPolicy
             return false;
     }
 
+
     public function import_province(User $user)
     {
         if($user->department_id > 4)
@@ -43,5 +44,12 @@ class UserPolicy
             return false;
     }
 
+    public function import_material(User $user)
+    {
+        if($user->department_id >4)
+            return true;
+        else
+            return false;
+    }
 
 }

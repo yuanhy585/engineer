@@ -15,10 +15,21 @@
         <br/><br/>
         <div class="form-group">
             <form class="form-inline">
-                <select class="form-control"><option></option></select>
-                <select class="form-control"><option></option></select>
-                <select class="form-control"><option></option></select>
-
+                <select name="region_id" class="form-control">
+                    @foreach($regions as $id => $name)
+                        <option value="{{$id}}">{{$name}}</option>
+                    @endforeach
+                </select>
+                <select name="province_id" class="form-control">
+                    @foreach($provinces as $id => $name)
+                        <option value="{{$id}}">{{$name}}</option>
+                    @endforeach
+                </select>
+                <select name="city_id" class="form-control">
+                    @foreach($cities as $id => $name)
+                        <option value="{{$id}}">{{$name}}</option>
+                    @endforeach
+                </select>
                 <input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>
                 <input type="text" name="shopcode" class="form-control" placeholder="{{trans('shop.input_shop_code')}}"/>
                 <input type="text" name="shopname" class="form-control" placeholder="{{trans('shop.input_shop_name')}}"/>

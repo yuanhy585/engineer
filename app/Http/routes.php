@@ -17,10 +17,17 @@ Route::group(['middleware'=>'language'],function(){
         //routes for shops
         Route::resource('/shops','ShopController');
 
+        //routes for materials
+        Route::resource('/materials','MaterialController');
+
 
         //route for province data import
         Route::get('/province','ImportController@provinceImport');
         Route::post('/province/data_import','ImportController@provinceReceive');
+
+        //route for material data import
+        Route::get('/material','ImportController@materialImport');
+        Route::post('/material/data_import','ImportController@materialReceive');
 
     });
 });

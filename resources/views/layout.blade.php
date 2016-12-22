@@ -37,11 +37,12 @@
                 <li class="active"><a href="/">{{trans('home.home')}}</a></li>
                 <li><a href="/users">{{trans('user.HR_management')}}</a></li>
                 <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
+                <li><a href="/materials">{{trans('material.material_management')}}</a></li>
                 <li class="dropdown">
-                    <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">文件导入 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/province">导入省份</a></li>
-                        <li><a href="#">Another action</a></li>
+                        <li><a href="/material">导入材料</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Nav header</li>

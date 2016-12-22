@@ -22,7 +22,6 @@ class ShopController extends Controller
         }
 
         $inputs = $request->has('select')?json_decode($request->input(['select']),true):$request->all();
-        $a = $inputs;
 
         $shops = Shop::where(function($query)use($inputs){
             if (isset($inputs['findByShopUser'])) {
@@ -30,7 +29,12 @@ class ShopController extends Controller
             }
         })->paginate(5);
 
-        return view('shops.index',compact('shops','a'));
+        $a = $inputs;
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+
+        return view('shops.index',compact('shops','a','provinces','regions','cities'));
     }
 
 
