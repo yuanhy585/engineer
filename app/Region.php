@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    //
+    public function shops()
+    {
+        return $this->belongsTo('App\Shop');
+    }
 }
