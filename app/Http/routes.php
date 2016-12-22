@@ -17,6 +17,11 @@ Route::group(['middleware'=>'language'],function(){
         //routes for shops
         Route::resource('/shops','ShopController');
 
+
+        //route for province data import
+        Route::get('/province','ImportController@provinceImport');
+        Route::post('/province/data_import','ImportController@provinceReceive');
+
     });
 });
 
