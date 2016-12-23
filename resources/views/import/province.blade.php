@@ -5,7 +5,7 @@
         <form class="form-inline" action="/province/data_import" method="post" role="form"
               enctype="multipart/form-data">
 
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
             <div style="float: left;">
                 <a class="btn btn-primary" onclick="document.getElementById('upfile').click();">
                     选择文件

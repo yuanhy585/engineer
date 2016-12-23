@@ -5,8 +5,7 @@
         <form class="form-inline" action="/material/data_import" method="post" role="form"
               enctype="multipart/form-data">
 
-            {!! csrf_field() !!}
-
+            {{csrf_field()}}
             <a class="btn btn-primary" onclick="document.getElementById('upfile').click()">
                 选择文件
             </a>
