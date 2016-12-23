@@ -35,6 +35,14 @@ class UserPolicy
             return false;
     }
 
+    public function manage_material(User $user)
+    {
+        if($user->department_id > 4)
+            return true;
+        else
+            return false;
+    }
+
 
     public function import_province(User $user)
     {

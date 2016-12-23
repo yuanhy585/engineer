@@ -11,23 +11,26 @@ Route::group(['middleware'=>'language'],function(){
 
         //routes for users
         Route::resource('users','UserController');
-        Route::get('users/{id}/update','UserController@update');
+        Route::post('users/{id}/update','UserController@update');
         Route::get('users/{id}/delete','UserController@destroy');
 
         //routes for shops
         Route::resource('/shops','ShopController');
 
         //routes for materials
-        Route::resource('/materials','MaterialController');
+        Route::resource('materials','MaterialController');
+        Route::get('materials/{id}/edit','MaterialController@edit');
+        Route::post('materials/{id}/update','MaterialController@update');
+        Route::get('materials/{id}/delete','MaterialController@destroy');
 
 
         //route for province data import
-        Route::get('/province','ImportController@provinceImport');
-        Route::post('/province/data_import','ImportController@provinceReceive');
+        Route::get('province','ImportController@provinceImport');
+        Route::post('province/data_import','ImportController@provinceReceive');
 
         //route for material data import
-        Route::get('/material','ImportController@materialImport');
-        Route::post('/material/data_import','ImportController@materialReceive');
+        Route::get('material','ImportController@materialImport');
+        Route::post('material/data_import','ImportController@materialReceive');
 
     });
 });
