@@ -11,6 +11,7 @@
     <div class="row">
         <form role="form" class="form-group" method="post" action="/shops">
 
+            {{csrf_field()}}
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.region')}}:
                 <select name="region_id" class="form-control">

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form role="form" class="form-group" method="put" action="/users/{{$user->id}}/update">
+                <form role="form" class="form-group" method="post" action="/users/{{$user->id}}/update">
 
                     {{csrf_field()}}
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
