@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    public function region()
-    {
-        return $this->belongsTo('App\Region');
-    }
 
     public function province()
     {
@@ -26,7 +22,7 @@ class Shop extends Model
         return $this->belongsTo('App\Channel');
     }
 
-    public function shop_level()
+    public function shopLevel()
     {
         return $this->belongsTo('App\ShopLevel');
     }

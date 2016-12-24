@@ -48,16 +48,16 @@
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>
-{{--                        <td>{{trans('shop.region')}}</td>--}}
-{{--                        <td>{{trans('shop.province')}}</td>--}}
+                        <td>{{trans('shop.region')}}</td>
+                        <td>{{trans('shop.province')}}</td>
+                        <td>{{trans('shop.shop_user')}}</td>
                         <td>{{trans('shop.city')}}</td>
                         <td>{{trans('shop.channel')}}</td>
                         <td>{{trans('shop.shop_level')}}</td>
                         <td>{{trans('shop.parent_shop')}}</td>
                         <td>{{trans('shop.shop_code')}}</td>
                         <td>{{trans('shop.shop_name')}}</td>
-                        <td>{{trans('shop.shop_user')}}</td>
-{{--                        <td>{{trans('shop.contact_number')}}</td>--}}
+                        <td>{{trans('shop.contact')}}</td>
                         <td>{{trans('shop.shop_address')}}</td>
                         <td>{{trans('shop.edit')}}</td>
                     </tr>
@@ -65,16 +65,16 @@
                 <tbody>
                 @foreach($shops as $shop)
                     <tr>
-{{--                        <td>{{$shop->region->id}}</td>--}}
-{{--                        <td>{{$shop->province->id}}</td>--}}
+                        <td>{{$shop->city->region->name}}</td>
+                        <td>{{$shop->city->province->name}}</td>
+                        <td>{{$shop->user->name}}</td>
                         <td>{{$shop->city->name}}</td>
                         <td>{{$shop->channel->name}}</td>
-                        <td>{{$shop->shop_level->name}}</td>
+                        <td>{{$shop->shopLevel->name}}</td>
                         <td>{{$shop->parent_shop}}</td>
                         <td>{{$shop->shop_code}}</td>
                         <td>{{$shop->name}}</td>
-                        <td>{{$shop->user_id}}</td>
-                        {{--<td>111222</td> --}}
+                        <td>{{$shop->user->phone}}</td>
                         <td>{{$shop->address}}</td>
                         <td><a class="btn btn-primary" href="">{{trans('shop.shop_update')}}</a></td>
                     </tr>

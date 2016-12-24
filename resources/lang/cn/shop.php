@@ -19,7 +19,7 @@ return [
     'shop_code'=>'门店编码',
     'shop_name'=>'门店名称',
     'shop_user'=>'门店联系人',
-    'contact_number'=>'联系电话',
+    'contact'=>'联系人',
     'shop_address'=>'门店地址',
     'edit'=>'编辑',
     'shop_update'=>'更新门店',

@@ -19,7 +19,7 @@ return [
     'shop_code'=>'Shop Code',
     'shop_name'=>'Shop Name',
     'shop_user'=>'Shop Contact',
-    'contact_number'=>'Contact Number',
+    'contact'=>'Contact',
     'shop_address'=>'Shop Address',
     'edit'=>'Edit',
     'shop_update'=>'Shop Update',

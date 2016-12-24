@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Engineer</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blue.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -81,6 +81,9 @@
     @yield('content')
 </div>
 
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+@yield('js')
 </body>
 
 </html>

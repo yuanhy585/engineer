@@ -1,4 +1,7 @@
 @extends('layout')
+@section('js')
+    <script src="/js/linkage.js"></script>
+    @append
 @section('content')
 <div class="container">
     <div class="row">
@@ -14,7 +17,7 @@
             {{csrf_field()}}
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.region')}}:
-                <select name="region_id" class="form-control">
+                <select id="region_id" name="region_id" class="form-control">
                     @foreach($regions as $id => $name)
                         <option value="{{$id}}">{{$name}}</option>
                     @endforeach
@@ -22,18 +25,18 @@
             </div>
             <div class="col-md-5"  style="margin-bottom: 15px;">
                 {{trans('shop.province')}}:
-                <select name="province_id" class="form-control">
+                <select id="province_id" name="province_id" class="form-control">
                     @foreach($provinces as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option @if($id == $province_id) selected @endif value="{{$id}}">{{$name}}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.city')}}:
-                <select name="city_id" class="form-control">
+                <select id="city_id" name="city_id" class="form-control">
                     @foreach($cities as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option @if($id == $city_id) selected @endif value="{{$id}}">{{$name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -48,7 +51,7 @@
 
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.shop_level')}}:
-                <select name="shop_level" class="form-control">
+                <select name="shop_level_id" class="form-control">
                     @foreach($shop_levels as $id => $name)
                         <option value="{{$id}}">{{$name}}</option>
                     @endforeach
@@ -61,24 +64,24 @@
 
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.shop_code')}}:
-                <input type="text" name="parent_shop" class="form-control"/>
+                <input type="text" name="shop_code" class="form-control"/>
             </div>
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.shop_name')}}:
-                <input type="text" name="parent_shop" class="form-control"/>
+                <input type="text" name="shop_name" class="form-control"/>
             </div>
 
             <div class="col-md-5" style="margin-bottom: 15px;">
-                {{trans('shop.contact_number')}}:
-                <select name="contact_number" class="form-control">
-                    {{--@foreach($contact_numbers as $id => $name)--}}
-                    {{--<option value="{{$id}}">{{$name}}</option>--}}
-                    {{--@endforeach--}}
+                {{trans('shop.contact')}}:
+                <select name="phone" class="form-control">
+                    @foreach($sellers as $name => $phone)
+                    <option value="{{$phone}}">{{$name}} {{$phone}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-5" style="margin-bottom: 15px;">
                 {{trans('shop.shop_address')}}:
-                <input type="text" name="parent_shop" class="form-control"/>
+                <input type="text" name="shop_address" class="form-control"/>
             </div>
 
             <div class="col-md-5" style="margin-bottom: 15px;">
