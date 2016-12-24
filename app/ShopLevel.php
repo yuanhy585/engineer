@@ -8,6 +8,6 @@ class ShopLevel extends Model
 {
     public function shops()
     {
-        return $this->belongsTo('App\Shop');
+        return $this->hasMany('App\Shop');
     }
 }

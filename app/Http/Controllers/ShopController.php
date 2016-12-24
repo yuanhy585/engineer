@@ -27,7 +27,7 @@ class ShopController extends Controller
             if (isset($inputs['findByShopUser'])) {
                 $query->where('name','LIKE','%',$inputs['findByShopUser'].'%');
             }
-        })->paginate(5);
+        })->paginate(10);
 
         $a = $inputs;
         $regions = Region::all()->pluck('name','id');

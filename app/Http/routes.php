@@ -15,7 +15,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('users/{id}/delete','UserController@destroy');
 
         //routes for shops
-        Route::resource('/shops','ShopController');
+        Route::resource('shops','ShopController');
 
         //routes for materials
         Route::resource('materials','MaterialController');

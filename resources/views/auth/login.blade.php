@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3" style="margin-top: 110px;">
             <div class="panel panel-primary">
                 <div class="panel-heading">登录</div>
                 <div class="panel-body">

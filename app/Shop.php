@@ -8,27 +8,27 @@ class Shop extends Model
 {
     public function region()
     {
-        return $this->hasOne('App\Region');
+        return $this->belongsTo('App\Region');
     }
 
     public function province()
     {
-        return $this->hasOne('App\Province');
+        return $this->belongsTo('App\Province');
     }
 
     public function city()
     {
-        return $this->hasOne('App\City');
+        return $this->belongsTo('App\City');
     }
 
     public function channel()
     {
-        return $this->hasOne('App\Channel');
+        return $this->belongsTo('App\Channel');
     }
 
-    public function shoplevel()
+    public function shop_level()
     {
-        return $this->hasOne('App\ShopLevel');
+        return $this->belongsTo('App\ShopLevel');
     }
 
     public function user()

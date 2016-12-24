@@ -15,25 +15,25 @@
         <br/><br/>
         <div class="form-group">
             <form class="form-inline">
-                <select name="region_id" class="form-control">
+                <select name="region" class="form-control">
                     @foreach($regions as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option>{{$name}}</option>
                     @endforeach
                 </select>
-                <select name="province_id" class="form-control">
+                <select name="province" class="form-control">
                     @foreach($provinces as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option>{{$name}}</option>
                     @endforeach
                 </select>
-                <select name="city_id" class="form-control">
+                <select name="city" class="form-control">
                     @foreach($cities as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
+                        <option>{{$name}}</option>
                     @endforeach
                 </select>
-                <input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>
-                <input type="text" name="shopcode" class="form-control" placeholder="{{trans('shop.input_shop_code')}}"/>
-                <input type="text" name="shopname" class="form-control" placeholder="{{trans('shop.input_shop_name')}}"/>
-                <input type="text" name="shopaddress" class="form-control" placeholder="{{trans('shop.input_shop_address')}}"/>
+                {{--<input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>--}}
+                {{--<input type="text" name="shopcode" class="form-control" placeholder="{{trans('shop.input_shop_code')}}"/>--}}
+                {{--<input type="text" name="shopname" class="form-control" placeholder="{{trans('shop.input_shop_name')}}"/>--}}
+                {{--<input type="text" name="shopaddress" class="form-control" placeholder="{{trans('shop.input_shop_address')}}"/>--}}
 
                 <div class="search" style="margin-top: 15px;">
                     <input type="text" name="findByShopUser" class="form-control"
@@ -48,8 +48,8 @@
             <table class="table table-striped table-bordered text-center">
                 <thead>
                     <tr>
-                        <td>{{trans('shop.region')}}</td>
-                        <td>{{trans('shop.province')}}</td>
+{{--                        <td>{{trans('shop.region')}}</td>--}}
+{{--                        <td>{{trans('shop.province')}}</td>--}}
                         <td>{{trans('shop.city')}}</td>
                         <td>{{trans('shop.channel')}}</td>
                         <td>{{trans('shop.shop_level')}}</td>
@@ -57,25 +57,27 @@
                         <td>{{trans('shop.shop_code')}}</td>
                         <td>{{trans('shop.shop_name')}}</td>
                         <td>{{trans('shop.shop_user')}}</td>
-                        <td>{{trans('shop.contact_number')}}</td>
+{{--                        <td>{{trans('shop.contact_number')}}</td>--}}
                         <td>{{trans('shop.shop_address')}}</td>
                         <td>{{trans('shop.edit')}}</td>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($shops as $shop)
-                    <td>{{$shop->region->name}}</td>
-                    <td>{{$shop->province->name}}</td>
-                    <td>{{$shop->city->name}}</td>
-                    <td>{{$shop->channel->name}}</td>
-                    <td>{{$shop->shoplevel->name}}</td>
-                        <td>{{$shop->parent_shop}}</td> //可直接取得
-                        <td>{{$shop->shop_code}}</td>  //可直接取得
-                        <td>{{$shop->name}}</td>  //可直接取得
-                    <td>{{$shop->shops->name}}</td>  //user即contact
-                    <td>{{$shop->contact_number}}</td>  //??
-                        <td>{{$shop->address}}</td>  //可直接取得
-                    <td><a class="btn btn-primary" href="">{{trans('shop.shop_update')}}</a></td>
+                    <tr>
+{{--                        <td>{{$shop->region->id}}</td>--}}
+{{--                        <td>{{$shop->province->id}}</td>--}}
+                        <td>{{$shop->city->name}}</td>
+                        <td>{{$shop->channel->name}}</td>
+                        <td>{{$shop->shop_level->name}}</td>
+                        <td>{{$shop->parent_shop}}</td>
+                        <td>{{$shop->shop_code}}</td>
+                        <td>{{$shop->name}}</td>
+                        <td>{{$shop->user_id}}</td>
+                        {{--<td>111222</td> --}}
+                        <td>{{$shop->address}}</td>
+                        <td><a class="btn btn-primary" href="">{{trans('shop.shop_update')}}</a></td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>

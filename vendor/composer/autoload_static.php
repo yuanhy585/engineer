@@ -309,6 +309,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
 
     public static $classMap = array (
         'AddColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+        'ChangeColumnInShopsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_23_060623_change_column_in_shops_table.php',
         'ChannelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ChannelTableSeeder.php',
         'CreateChannelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040912_create_channels_table.php',
         'CreateCitiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_062540_create_cities_table.php',
