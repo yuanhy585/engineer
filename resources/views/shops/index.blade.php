@@ -76,7 +76,7 @@
                         <td>{{$shop->name}}</td>
                         <td>{{$shop->user->phone}}</td>
                         <td>{{$shop->address}}</td>
-                        <td><a class="btn btn-primary" href="">{{trans('shop.shop_update')}}</a></td>
+                        <td><a class="btn btn-primary" href="/shops/{{$shop->id}}/edit">{{trans('shop.shop_update')}}</a></td>
                     </tr>
                 @endforeach
                 </tbody>

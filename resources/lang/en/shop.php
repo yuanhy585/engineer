@@ -25,4 +25,8 @@ return [
     'shop_update'=>'Shop Update',
     'submit'=>'Submit',
     'return'=>'Return',
+    'shop_edit'=>'Shop Edit',
+    'cancel'=>'Cancel',
+
+
 ];

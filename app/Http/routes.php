@@ -16,6 +16,7 @@ Route::group(['middleware'=>'language'],function(){
 
         //routes for shops
         Route::resource('shops','ShopController');
+        Route::post('shops/{id}/update','ShopController@update');
 
 
         //routes for materials

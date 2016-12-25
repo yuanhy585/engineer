@@ -84,9 +84,58 @@ class ShopController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        if (Gate::denies('manage_shop',Auth::user()))
+        {
+            return Redirect::back();
+        }
+        $shop = Shop::where('id',$id)->first();
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $channels = Channel::all()->pluck('name','id');
+        $shop_levels = ShopLevel::all()->pluck('name','id');
+        $sellers = User::where('department_id',1)->pluck('phone','name');
 
+        return view('shops.edit',compact('shop','regions','provinces','cities','channels',
+            'shop_levels','sellers','province_id','city_id'));
 
+    }
 
+    public function update(Request $request, $id)
+    {
+        if (Gate::denies('manage_shop',Auth::user()))
+        {
+            return Redirect::back();
+        }
+        $shop = Shop::where('id',$id)->first();
+        $inputs = $request->all();
+        //dd($inputs);
+        $shop->user_id = User::where('phone',$inputs['phone'])->first()->id;
+        $shop->city_id = $inputs['city_id'];
+        $shop->channel_id = $inputs['channel_id'];
+        $shop->shop_level_id = $inputs['shop_level_id'];
+        if (isset($inputs['parent_shop']))
+        {
+            $shop->parent_shop = $inputs['parent_shop'];
+        }
+        if (isset($inputs['shop_code']))
+        {
+            $shop->shop_code = $inputs['shop_code'];
+        }
+
+        $shop->name = $inputs['shop_name'];
+
+        if (isset($inputs['shop_address']))
+        {
+            $shop->address = $inputs['shop_address'];
+        }
+
+        $shop->save();
+        return redirect('/shops');
+
+    }
 
 
 

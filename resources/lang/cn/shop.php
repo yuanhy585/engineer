@@ -25,8 +25,8 @@ return [
     'shop_update'=>'更新门店',
     'submit'=>'确认',
     'return'=>'返回',
-
-
+    'shop_edit'=>'门店信息修改',
+    'cancel'=>'取消',
 
 
 ];
