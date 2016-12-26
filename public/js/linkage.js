@@ -63,14 +63,14 @@ $("#province_id").change(function(){
 });
 
 // linkage for shops.myShop view
-$("#provinceId").change(function(){
-    var provinceId = $('#provinceId').val();
+$("#province_id").change(function(){
+    var province_id = $('#province_id').val();
     $.ajax({
         type:'POST',
         url:'/ajax/province_city',
         data:{
             _token: CSRF_TOKEN,
-            province_id:provinceId
+            province_id:province_id
         },
         dataType:'json',
         success:function(data){
@@ -82,8 +82,8 @@ $("#provinceId").change(function(){
                 strCity += data[i].name;
                 strCity += '</option>';
             });
-            $('#cityId').html('');
-            $('#cityId').append(strCity);
+            $('#city_id').html('');
+            $('#city_id').append(strCity);
         },
         error:function(xhr, type){
             alert('错误！')

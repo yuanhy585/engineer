@@ -15,7 +15,8 @@
                 <form role="form" action="/users">
                     <select name="department_id" class="form-control">
                         @foreach($departments as $id=>$title)
-                            <option name="department_id" value="{{isset($a['department_id'])?$a['department_id']:null}}">
+                            <option name="department_id"
+                                    value="{{isset($a['department_id'])?$a['department_id']:null}}">
                                 {{$title}}
                             </option>
                         @endforeach

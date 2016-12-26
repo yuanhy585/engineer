@@ -16,23 +16,12 @@
             </a>
         </div>
         <br/><br/>
+
         <div class="form-group">
-            <form class="form-inline">
-                <select id="region_id" name="region" class="form-control">
-                    @foreach($regions as $id => $name)
-                        <option value="{{$id}}">{{$name}}</option>
-                    @endforeach
-                </select>
-                <select id="province_id" name="province" class="form-control">
-                    @foreach($provinces as $id => $name)
-                        <option @if($id == $province_id) selected @endif value="{{$id}}">{{$name}}</option>
-                    @endforeach
-                </select>
-                <select id="city_id" name="city" class="form-control">
-                    @foreach($cities as $id => $name)
-                        <option @if($id == $city_id) selected @endif value="{{$id}}">{{$name}}</option>
-                    @endforeach
-                </select>
+            <form class="form-inline" action="/shops">
+
+                @include('shops.linkage')
+
                 {{--<input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>--}}
                 {{--<input type="text" name="shopcode" class="form-control" placeholder="{{trans('shop.input_shop_code')}}"/>--}}
                 {{--<input type="text" name="shopname" class="form-control" placeholder="{{trans('shop.input_shop_name')}}"/>--}}

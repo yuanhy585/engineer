@@ -7,7 +7,9 @@
         </div>
         <br/><hr/>
         <div>
-            <a class="btn btn-primary" href="/materials/create">{{trans('material.material_create')}}</a>
+            <a class="btn btn-primary" href="/materials/create">
+                {{trans('material.material_create')}}
+            </a>
         </div>
         <br/>
         <div class="table-responsive">

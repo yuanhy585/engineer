@@ -11,35 +11,19 @@
             </div>
             <br/><hr/>
             <div class="form-group">
-                <form class="form-inline">
-                    <select id="regionId" name="region" class="form-control">
-                        @foreach($regions as $id => $name)
-                            <option value="{{$id}}">{{$name}}</option>
-                        @endforeach
-                    </select>
-                    <select id="provinceId" name="province" class="form-control">
-                        @foreach($provinces as $id => $name)
-                            <option @if($id == $province_id) selected @endif value="{{$id}}">
-                                {{$name}}
-                            </option>
-                        @endforeach
-                    </select>
-                    <select id="cityId" name="city" class="form-control">
-                        @foreach($cities as $id => $name)
-                            <option @if($id == $city_id) selected @endif value="{{$id}}">
-                                {{$name}}
-                            </option>
-                        @endforeach
-                    </select>
+                <form class="form-inline" action="/myshop">
+
+                    @include('shops.linkage')
+
                     {{--<input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>--}}
                     {{--<input type="text" name="shopcode" class="form-control" placeholder="{{trans('shop.input_shop_code')}}"/>--}}
                     {{--<input type="text" name="shopname" class="form-control" placeholder="{{trans('shop.input_shop_name')}}"/>--}}
 
                     <div style="margin-top: 15px;">
                         {{--<input type="text" name="shopaddress" class="form-control" placeholder="{{trans('shop.input_shop_address')}}"/>--}}
-                        <input type="text" name="findByShopUser" class="form-control"
-                               placeholder="{{trans('shop.input_shop_user')}}"
-                               value="{{isset($a['findByUserName'])?$a['findByUserName']:""}}"/>
+                        <input type="text" name="findByShopName" class="form-control"
+                               placeholder="{{trans('shop.input_shop_name')}}"
+                               value="{{isset($a['findByShopName'])?$a['findByShopName']:""}}"/>
                         <button type="submit" class="btn btn-primary">{{trans('shop.search')}}</button>
                     </div>
                 </form>

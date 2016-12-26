@@ -26,17 +26,24 @@ class ShopController extends Controller
 
         $shops = Shop::where(function($query)use($inputs){
             if (isset($inputs['findByShopUser'])) {
-                $query->where('name','LIKE','%',$inputs['findByShopUser'].'%');
+                $query->where('name','LIKE','%'.$inputs['findByShopUser'].'%');
             }
         })
-            ->paginate(10);
+        ->orwhereHas('user',function ($query) use ($inputs)
+        {
+            if (isset($inputs['findByShopUser'])) {
+                $query->where('name','LIKE','%'.$inputs['findByShopUser'].'%');
+            }
+        })
+        ->paginate(10);
 
         $a = $inputs;
         $regions = Region::all()->pluck('name','id');
         $provinces = Province::all()->pluck('name','id');
         $cities = City::all()->pluck('name','id');
-        $province_id = 1;
-        $city_id = 169;
+
+        $province_id = isset($inputs['province'])?$inputs['province']:1;
+        $city_id = isset($inputs['city'])?$inputs['city']:169;
 
         return view('shops.index',compact('shops','a','provinces','regions','cities',
             'province_id','city_id'));
@@ -150,8 +157,8 @@ class ShopController extends Controller
         $inputs = $request->has('select')?json_decode($request->input(['select']),true):$request->all();
 
         $shops = Shop::where(function($query)use($inputs){
-            if (isset($inputs['findByUserName'])) {
-                $query->where('name','LIKE','%',$inputs['findByUserName'].'%');
+            if (isset($inputs['findByShopName'])) {
+                $query->where('name','LIKE','%'.$inputs['findByShopName'].'%');
             }
         })
             ->where('user_id',Auth::user()->id) //UserPolicy中定义的方法只定义谁有操作权限，不能过滤
