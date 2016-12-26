@@ -1,4 +1,7 @@
 @extends('layout')
+@section('js')
+    <script src="/js/linkage.js"></script>
+@append
 @section('content')
 <div class="container">
     <div class="row">
@@ -15,19 +18,19 @@
         <br/><br/>
         <div class="form-group">
             <form class="form-inline">
-                <select name="region" class="form-control">
+                <select id="region_id" name="region" class="form-control">
                     @foreach($regions as $id => $name)
-                        <option>{{$name}}</option>
+                        <option value="{{$id}}">{{$name}}</option>
                     @endforeach
                 </select>
-                <select name="province" class="form-control">
+                <select id="province_id" name="province" class="form-control">
                     @foreach($provinces as $id => $name)
-                        <option>{{$name}}</option>
+                        <option @if($id == $province_id) selected @endif value="{{$id}}">{{$name}}</option>
                     @endforeach
                 </select>
-                <select name="city" class="form-control">
+                <select id="city_id" name="city" class="form-control">
                     @foreach($cities as $id => $name)
-                        <option>{{$name}}</option>
+                        <option @if($id == $city_id) selected @endif value="{{$id}}">{{$name}}</option>
                     @endforeach
                 </select>
                 {{--<input type="text" name="parentshop" class="form-control" placeholder="{{trans('shop.input_parent_shop')}}"/>--}}
@@ -76,7 +79,11 @@
                         <td>{{$shop->name}}</td>
                         <td>{{$shop->user->phone}}</td>
                         <td>{{$shop->address}}</td>
-                        <td><a class="btn btn-primary" href="/shops/{{$shop->id}}/edit">{{trans('shop.shop_update')}}</a></td>
+                        <td>
+                            <a class="btn btn-primary" href="/shops/{{$shop->id}}/edit">
+                                {{trans('shop.shop_update')}}
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

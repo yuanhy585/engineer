@@ -17,6 +17,7 @@ Route::group(['middleware'=>'language'],function(){
         //routes for shops
         Route::resource('shops','ShopController');
         Route::post('shops/{id}/update','ShopController@update');
+        Route::get('myshop','ShopController@myShop');
 
 
         //routes for materials
@@ -34,8 +35,13 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('material','ImportController@materialImport');
         Route::post('material/data_import','ImportController@materialReceive');
 
+        //route for status data import
+        Route::get('status','ImportController@statusImport');
+
 
         Route::post('ajax/province','ShopController@ajxProvince');
+        Route::post('ajax/province_city_correlation','ShopController@ajxCorrelation');
+        Route::post('ajax/province_city','ShopController@ajxPC');
 
     });
 });

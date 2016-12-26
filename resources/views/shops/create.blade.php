@@ -1,7 +1,8 @@
 @extends('layout')
 @section('js')
     <script src="/js/linkage.js"></script>
-    @append
+@append
+
 @section('content')
 <div class="container">
     <div class="row">

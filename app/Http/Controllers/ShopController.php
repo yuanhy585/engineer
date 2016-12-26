@@ -28,14 +28,18 @@ class ShopController extends Controller
             if (isset($inputs['findByShopUser'])) {
                 $query->where('name','LIKE','%',$inputs['findByShopUser'].'%');
             }
-        })->paginate(10);
+        })
+            ->paginate(10);
 
         $a = $inputs;
         $regions = Region::all()->pluck('name','id');
         $provinces = Province::all()->pluck('name','id');
         $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
 
-        return view('shops.index',compact('shops','a','provinces','regions','cities'));
+        return view('shops.index',compact('shops','a','provinces','regions','cities',
+            'province_id','city_id'));
     }
 
 
@@ -137,6 +141,31 @@ class ShopController extends Controller
 
     }
 
+    public function myShop(Request $request)
+    {
+        if (Gate::denies('manage_myShop',Auth::user()))
+        {
+            return back();
+        }
+        $inputs = $request->has('select')?json_decode($request->input(['select']),true):$request->all();
+
+        $shops = Shop::where(function($query)use($inputs){
+            if (isset($inputs['findByUserName'])) {
+                $query->where('name','LIKE','%',$inputs['findByUserName'].'%');
+            }
+        })
+            ->where('user_id',Auth::user()->id) //UserPolicy中定义的方法只定义谁有操作权限，不能过滤
+            ->paginate(10);
+        $a = $inputs;
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
+        return view('shops.myShop',compact('a','shops','regions','provinces','cities',
+            'province_id','city_id'));
+    }
+
 
 
     public function ajxProvince(Request $request)
@@ -144,6 +173,20 @@ class ShopController extends Controller
         $inputs = $request->all();
         $cities = City::where('province_id', $inputs['province_id'])->get();
 
+        return $cities;
+    }
+
+
+    public function ajxCorrelation(Request $request)
+    {
+        $inputs = $request->all();
+        $cities = City::where('province_id',$inputs['province_id'])->get();
+        return $cities;
+    }
+    public function ajxPC(Request $request)
+    {
+        $inputs = $request->all();
+        $cities = City::where('province_id',$inputs['province_id'])->get();
         return $cities;
     }
 
