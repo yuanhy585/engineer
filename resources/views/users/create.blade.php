@@ -2,6 +2,12 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="page_title" style="font-size: 30px;">
+            {{trans('user.user_create')}}
+        </div>
+        <br/><hr/>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <form role="form" class="form-group" method="post" action="/users">
 
@@ -42,8 +48,12 @@
                     @endforeach
                 </select>
                 <br/>
-                <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
-                <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
+                <div class="center">
+                    <button type="submit" class="btn btn-info" style="margin-right: 50px;">
+                        {{trans('user.submit')}}
+                    </button>
+                    <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
+                </div>
             </form>
         </div>
 

@@ -42,7 +42,9 @@
                     </select>
                     <br/>
                     <div class="center">
-                        <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
+                        <button type="submit" class="btn btn-info" style="margin-right: 50px;">
+                            {{trans('user.submit')}}
+                        </button>
                         <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
                     </div>
                 </form>

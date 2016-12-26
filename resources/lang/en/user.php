@@ -23,7 +23,6 @@ return[
     'delete'=>'Delete',
     'user_information_edit'=>'UserInfo Edit',
 
-
     'return'=>'Return',
     'error_tag'=>'This phone number has already been used. Please register with a new one.',
 
