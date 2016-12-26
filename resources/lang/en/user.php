@@ -5,6 +5,7 @@ return[
     'pwd'=>'Password',
     'real_name'=>'Name',
     'role'=>'Role',
+    'phone'=>'Phone',
     'language'=>'Language',
     'department'=>'Department',
     'new_password'=>'New Password',
@@ -20,9 +21,11 @@ return[
     'operation'=>'Operation',
     'edit'=>'Edit',
     'delete'=>'Delete',
+    'user_information_edit'=>'UserInfo Edit',
+
 
     'return'=>'Return',
-    'error_tag'=>'This email address has already been used. Please register with a new one.',
+    'error_tag'=>'This phone number has already been used. Please register with a new one.',
 
 
 ];

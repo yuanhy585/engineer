@@ -52,6 +52,7 @@ class UserController extends Controller
         $inputs = $request->all();
         //加过滤，邮箱唯一性
         $user = User::where('email',$inputs['email'])->first();
+        $phones = User::all()->pluck('phone')->toArray();
         if($user)
         {
             return Redirect::back()->withErrors(['email'=>trans('user.error_tag')])->withInput();
@@ -60,6 +61,12 @@ class UserController extends Controller
         $user = new User();
         $user->name = $inputs['name'];
         $user->email = $inputs['email'];
+        $user->password = bcrypt($inputs['password']);
+        if (in_array($inputs['phone'],$phones))
+        {
+            return Redirect::back()->withErrors(['phone'=>trans('user.error_tag')])->withInput();
+        }
+        $user->phone = $inputs['phone'];
         $user->language_id = $inputs['language_id'];
         $user->department_id = $inputs['department_id'];
         $user->save();
@@ -87,7 +94,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::where('id',$id)->first();
-        $emails = User::all()->pluck('email')->toArray();
+//        $emails = User::all()->pluck('email')->toArray();
 
         $inputs = $request->all();
 //        if(in_array($inputs['email'],$emails))

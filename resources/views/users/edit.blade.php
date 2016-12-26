@@ -2,6 +2,12 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="page-title" style="font-size: 30px;">
+                {{trans('user.user_information_edit')}}
+            </div>
+            <br/><hr/><br/>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <form role="form" class="form-group" method="post" action="/users/{{$user->id}}/update">
 
@@ -11,11 +17,6 @@
                     {{trans('user.title')}}:
                     <input type="text" class="form-control" name="name"
                     value="{{$user->name}}"><br/>
-
-                    {{trans('user.email')}}:
-                    <input type="email" class="form-control" name="email"
-                    value="{{$user->email}}">
-                    {!! errors_for('email',$errors) !!}<br/>
 
                     {{trans('user.language')}}:
                     <select name="language_id" class="form-control">
@@ -40,9 +41,10 @@
                         @endforeach
                     </select>
                     <br/>
-
-                    <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
-                    <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
+                    <div class="center">
+                        <button type="submit" class="btn btn-info">{{trans('user.submit')}}</button>
+                        <a class="btn btn-danger" href="/users">{{trans('user.cancel')}}</a>
+                    </div>
                 </form>
             </div>
 

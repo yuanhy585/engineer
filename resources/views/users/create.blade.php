@@ -7,11 +7,20 @@
 
                 {{csrf_field()}}
                 {{trans('user.title')}}:
-                <input type="text" class="form-control" name="name"><br/>
+                <input type="text" class="form-control" name="name" /><br/>
 
                 {{trans('user.email')}}:
-                <input type="email" class="form-control" name="email" >
+                <input type="email" class="form-control" name="email" />
                 {!! errors_for('email',$errors) !!}
+                <br/>
+
+                {{trans('user.pwd')}}
+                <input type="text" class="form-control" name="password" />
+                <br/>
+
+                {{trans('user.phone')}}
+                <input type="text" class="form-control" name="phone" />
+                {!! errors_for('phone',$errors) !!}
                 <br/>
 
                 {{trans('user.language')}}:

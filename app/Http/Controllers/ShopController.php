@@ -62,9 +62,8 @@ class ShopController extends Controller
         $channels = Channel::all()->pluck('name','id');
         $shop_levels = ShopLevel::all()->pluck('name','id');
         $sellers = User::where('department_id',1)->pluck('phone','name');
-        $province_id = 1;
-        $city_id = 169;
-
+        $province_id = isset($inputs['province'])?$inputs['province']:1;
+        $city_id = isset($inputs['city'])?$inputs['city']:169;
 
         return view('shops.create',compact('regions','provinces','cities','channels',
             'shop_levels','sellers','province_id','city_id'));
@@ -167,8 +166,9 @@ class ShopController extends Controller
         $regions = Region::all()->pluck('name','id');
         $provinces = Province::all()->pluck('name','id');
         $cities = City::all()->pluck('name','id');
-        $province_id = 1;
-        $city_id = 169;
+
+        $province_id = isset($inputs['province'])?$inputs['province']:1;
+        $city_id = isset($inputs['city'])?$inputs['city']:169;
         return view('shops.myShop',compact('a','shops','regions','provinces','cities',
             'province_id','city_id'));
     }
