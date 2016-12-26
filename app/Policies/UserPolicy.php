@@ -60,4 +60,21 @@ class UserPolicy
             return false;
     }
 
+    public function manage_myShop(User $user)
+    {
+        if ($user->department_id == 1)
+            return true;
+        else
+            return false;
+
+    }
+
+    public function manage_status(User $user)
+    {
+        if ($user->department_id > 4)
+            return true;
+        else
+            return false;
+    }
+
 }

@@ -12,7 +12,6 @@
 
 </head>
 <body>
-
 {{--<div class="page-bar" style="padding-left:100px;height:40px;line-height: 40px;">--}}
     {{--contact:123@163.com--}}
     {{--<span style="float:right;padding-right:100px;"><a href="">中文</a>|<a href="">English</a></span>--}}
@@ -34,22 +33,33 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if(Auth::user())
+
+                @if(Auth::user()->department_id == 5)
                 <li class="active"><a href="/">{{trans('home.home')}}</a></li>
                 <li><a href="/users">{{trans('user.HR_management')}}</a></li>
                 <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
                 <li><a href="/materials">{{trans('material.material_management')}}</a></li>
+
                 <li class="dropdown">
                     <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">文件导入 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/province">导入省份</a></li>
                         <li><a href="/material">导入材料</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="/status">导入状态</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Nav header</li>
                         <li><a href="#">Separated link</a></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
+                @endif
+
+                @if(Auth::user()->department_id == 1)
+                <li><a href="/myshop">{{trans('shop.my_shop')}}</a></li>
+                <li><a href="">{{trans('shop.sale_order_application')}}</a></li>
+                <li><a href="">{{trans('shop.order_administration_detail')}}</a></li>
+                @endif
+
                 @endif
             </ul>
 
@@ -83,7 +93,6 @@
 
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-@yield('js')
+    @yield('js')
 </body>
-
 </html>

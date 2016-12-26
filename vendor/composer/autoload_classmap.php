@@ -20,6 +20,7 @@ return array(
     'CreateRegionsTable' => $baseDir . '/database/migrations/2016_12_20_062503_create_regions_table.php',
     'CreateShopLevelsTable' => $baseDir . '/database/migrations/2016_12_21_040759_create_shop_levels_table.php',
     'CreateShopsTable' => $baseDir . '/database/migrations/2016_12_21_040951_create_shops_table.php',
+    'CreateStatusesTable' => $baseDir . '/database/migrations/2016_12_26_062211_create_statuses_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DepartmentTableSeeder' => $baseDir . '/database/seeds/DepartmentTableSeeder.php',

@@ -322,6 +322,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
         'CreateRegionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_20_062503_create_regions_table.php',
         'CreateShopLevelsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040759_create_shop_levels_table.php',
         'CreateShopsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_21_040951_create_shops_table.php',
+        'CreateStatusesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_26_062211_create_statuses_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DepartmentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DepartmentTableSeeder.php',

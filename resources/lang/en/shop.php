@@ -29,4 +29,11 @@ return [
     'cancel'=>'Cancel',
 
 
+    'my_shop'=>'My Shops',
+    'check_order'=>'Order Check',
+    'add_order'=>'Order Add',
+    'sale_order_application'=>'Order Application',
+    'order_administration_detail'=>'Order Administration',
+
+
 ];

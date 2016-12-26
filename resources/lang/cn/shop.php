@@ -28,5 +28,11 @@ return [
     'shop_edit'=>'门店信息修改',
     'cancel'=>'取消',
 
+    'my_shop'=>'我的门店',
+    'check_order'=>'查看订单',
+    'add_order'=>'添加订单',
+    'sale_order_application'=>'销售订单申请',
+    'order_administration_detail'=>'订单执行情况明细',
+
 
 ];
