@@ -43,9 +43,9 @@
                 <li class="dropdown">
                     <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">文件导入 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/province">导入省份</a></li>
-                        <li><a href="/material">导入材料</a></li>
-                        <li><a href="/status">导入状态</a></li>
+                        <li><a href="/province">{{trans('import.province_import')}}</a></li>
+                        <li><a href="/material">{{trans('import.material_import')}}</a></li>
+                        <li><a href="/status">{{trans('import.status_import')}}</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Nav header</li>
                         <li><a href="#">Separated link</a></li>

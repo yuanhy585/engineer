@@ -37,6 +37,7 @@ Route::group(['middleware'=>'language'],function(){
 
         //route for status data import
         Route::get('status','ImportController@statusImport');
+        Route::post('status/data_import','ImportController@statusReceive');
 
 
         Route::post('ajax/province','ShopController@ajxProvince');

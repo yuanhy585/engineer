@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Material;
 use App\Province;
+use App\Status;
 use Gate,Auth,Redirect,Excel;
 
 
@@ -105,5 +106,46 @@ class ImportController extends Controller
 
         echo "导入成功,请返回刷新查看";
     }
+
+    //import status data
+    public function statusImport()
+    {
+        if (Gate::denies('manage_status',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        return view('import.status');
+    }
+
+    public function statusReceive(Request $request)
+    {
+        if($request->hasFile('file'))
+        {
+            $extension = $request->file('file')->getClientOriginalExtension();
+            if ($extension != 'xls' && $extension != 'xlsx')
+            {
+                return redirect()->back()->withInput()->withErrors(['file'=>'该扩展名不符合要求']);
+            }
+            $data = Excel::load($request->file('file'))->sheet(0)->toArray();
+
+            array_shift($data);
+
+            foreach ($data as $datum)
+            {
+                $statusData= Status::where('name',$datum[0])->first();
+                if (!$statusData)
+                {
+                    $statusData = new Status();
+                    $statusData->name = isset($datum[0])?$datum[0]:null;
+                    $statusData->save();
+                }
+            }
+
+        }
+
+        echo "导入成功,请返回刷新查看";
+    }
+
 
 }
