@@ -36,12 +36,39 @@
 
                 @if(Auth::user()->department_id == 5)
                 <li class="active"><a href="/">{{trans('home.home')}}</a></li>
-                <li><a href="/users">{{trans('user.HR_management')}}</a></li>
+                <li><a href="/order_check">{{trans('user.order_check')}}</a></li>
+                <li><a href="">{{trans('user.order_distribution')}}</a></li>
+                <li><a href="">{{trans('user.price_management')}}</a></li>
                 <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown">
+                        {{trans('user.report_check')}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/users" data-toggle="dropdown">
+                        {{trans('user.HR_management')}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="">{{trans('department.department1')}}</a></li>
+                        <li><a href="">{{trans('department.department2')}}</a></li>
+                        <li><a href="">{{trans('department.department3')}}</a></li>
+                        <li><a href="">{{trans('department.department4')}}</a></li>
+                        <li><a href="">{{trans('department.department5')}}</a></li>
+                    </ul>
+                </li>
                 <li><a href="/materials">{{trans('material.material_management')}}</a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">文件导入 <span class="caret"></span></a>
+                    <a href="#" class="d/media/kan/18792857786/writingropdown-toggle" data-toggle="dropdown">
+                        {{trans('import.file_import')}} <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/province">{{trans('import.province_import')}}</a></li>
                         <li><a href="/material">{{trans('import.material_import')}}</a></li>
@@ -55,8 +82,8 @@
                 @endif
 
                 @if(Auth::user()->department_id == 1)
-                <li><a href="/myshop">{{trans('shop.my_shop')}}</a></li>
-                <li><a href="">{{trans('shop.sale_order_application')}}</a></li>
+                {{--<li><a href=">{{trans('shop.my_shop')}}</a></li>--}}
+                <li><a href="/myshop">{{trans('shop.sale_order_application')}}</a></li>
                 <li><a href="">{{trans('shop.order_administration_detail')}}</a></li>
                 @endif
 
@@ -64,9 +91,9 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">中文</a></li>
+                {{--<li><a href="">中文</a></li>--}}
                 {{--<li>|</li>--}}
-                <li><a href="">English</a></li>
+                {{--<li><a href="">English</a></li>--}}
             @if(! Auth::guest())
                     {{--<li><a href="{{url('/login')}}">登录</a></li>    <! why can't i simply write href="/login"? can't approach the route!>--}}
                     {{--<li><a href="{{url('/register')}}">注册</a></li>--}}
@@ -91,9 +118,10 @@
     @yield('content')
 </div>
 
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-@yield('js')
-
+<div class="js">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    @yield('js')
+</div>
 </body>
 </html>

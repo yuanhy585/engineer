@@ -28,4 +28,13 @@ return[
     'return'=>'返回',
     'error_tag'=>'该联系方式已存在，请使用其他联系方式',
 
+    'order_check'=>'订单查看',
+    'order_distribution'=>'订单分配',
+    'price_management'=>'价格管理',
+    'report_check'=>'报表查看',
+
+
+
+
+
 ];

@@ -29,6 +29,10 @@ return [
     'cancel'=>'取消',
 
     'my_shop'=>'我的门店',
+    'total_orders'=>'订单总数',
+    'in_censoring'=>'待审核',
+    'passed'=>'审核通过',
+    'failed'=>'审核未通过',
     'check_order'=>'查看订单',
     'add_order'=>'添加订单',
     'sale_order_application'=>'销售订单申请',

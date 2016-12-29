@@ -26,5 +26,8 @@ return[
     'return'=>'Return',
     'error_tag'=>'This phone number has already been used. Please register with a new one.',
 
-
+    'order_check'=>'Order Check',
+    'order_distribution'=>'Order Distribution',
+    'price_management'=>'Price Management',
+    'report_check'=>'Report Check',
 ];

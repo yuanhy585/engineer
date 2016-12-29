@@ -19,6 +19,8 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('shops/{id}/update','ShopController@update');
         Route::get('myshop','ShopController@myShop');
 
+        //routes for users from project department
+        Route::resource('order_check','OrderCheckController');
 
         //routes for materials
         Route::resource('materials','MaterialController');

@@ -30,6 +30,10 @@ return [
 
 
     'my_shop'=>'My Shops',
+    'total_orders'=>'Total Orders',
+    'in_censoring'=>'In Censoring',
+    'passed'=>'Passed',
+    'failed'=>'Failed',
     'check_order'=>'Order Check',
     'add_order'=>'Order Add',
     'sale_order_application'=>'Order Application',

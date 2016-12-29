@@ -1,6 +1,6 @@
 <?php
 return [
-    'file_import'=>'文件导入',
+    'file_import'=>'File Import',
     'province_import'=>'Import Provinces',
     'material_import'=>'Import Materials',
     'status_import'=>'Import Statuses',

@@ -6,8 +6,14 @@
     <div class="container">
         <div class="row">
 
-            <div class="page_title" style="font-size: 30px;">
-                {{trans('shop.my_shop')}}
+            <div class="page_title">
+                <span style="font-size: 30px;">{{trans('shop.my_shop')}}</span>
+                <span style="color:red;">
+                    ( {{trans('shop.total_orders')}}:<span>0</span>&nbsp;&nbsp;
+                    {{trans('shop.in_censoring')}}:<span>0</span>&nbsp;&nbsp;
+                    {{trans('shop.passed')}}:<span>0</span>&nbsp;&nbsp;
+                    {{trans('shop.failed')}}:<span>0</span> )
+                </span>
             </div>
             <br/><hr/>
             <div class="form-group">
