@@ -197,4 +197,10 @@ class ShopController extends Controller
         return $cities;
     }
 
+    public function ajxCorrespondence(Request $request)
+    {
+        $inputs = $request->all();
+        $cities = City::where('province_id',$inputs['province_id'])->get();
+        return $cities;
+    }
 }

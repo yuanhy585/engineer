@@ -45,6 +45,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('ajax/province','ShopController@ajxProvince');
         Route::post('ajax/province_city_correlation','ShopController@ajxCorrelation');
         Route::post('ajax/province_city','ShopController@ajxPC');
+        Route::post('ajax/province_city_correspondence','ShopController@ajxCorrespondence');
 
     });
 });

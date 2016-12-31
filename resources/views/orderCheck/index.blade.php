@@ -1,4 +1,7 @@
 @extends('layout')
+@section('js')
+<script src="/js/linkage.js"></script>
+@append
 @section('content')
 <div class="container">
     <div class="row">
@@ -22,7 +25,8 @@
                 @include('shops.linkage')
                 <div class="search" style="margin-top:10px;">
                     <input type="text" class="form-control" name="findByUserName"
-                           placeholder="{{trans('order.input_shop_user')}}"/>
+                           placeholder="{{trans('order.input_shop_user')}}"
+                           value="{{isset($a['findByUserName'])?$a['findByUserName']:""}}"/>
                     <button class="btn btn-primary" type="submit">
                         {{trans('order.search')}}
                     </button>

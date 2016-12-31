@@ -42,7 +42,7 @@
                 <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
                 <li class="dropdown">
                     <a href="" data-toggle="dropdown">
-                        {{trans('user.report_check')}} <span class="caret"></span>
+                            {{trans('user.report_check')}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href=""></a></li>
@@ -52,10 +52,11 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="/users" data-toggle="dropdown">
+                    <a href="" data-toggle="dropdown">
                         {{trans('user.HR_management')}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="/users">{{trans('user.HR_management')}}</a></li>
                         <li><a href="">{{trans('department.department1')}}</a></li>
                         <li><a href="">{{trans('department.department2')}}</a></li>
                         <li><a href="">{{trans('department.department3')}}</a></li>
@@ -98,13 +99,18 @@
                     {{--<li><a href="{{url('/login')}}">登录</a></li>    <! why can't i simply write href="/login"? can't approach the route!>--}}
                     {{--<li><a href="{{url('/register')}}">注册</a></li>--}}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} ({{Auth::user()->department->title}})<span class="caret"></span>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button" aria-expanded="false">
+                            {{ Auth::user()->name }}({{Auth::user()->department->title}})<span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">修改密码</a></li>
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}">
+                                    <i class="fa fa-btn fa-sign-out"></i>退出
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 @endif
