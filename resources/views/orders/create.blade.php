@@ -16,7 +16,8 @@
 	</div>
 
 	<div class="row">
-		<form class="form-group" role="form" method="post" action="">
+		{{--<form class="form-group" role="form" method="post" action="">//这个地方你的action都没有写要把数据提交到哪里，当然不会保存，傻逼--}}
+		<form class="form-group" role="form" method="post" action="/orders/{{ $id }}/store">{{--又要传参数$id了--}}
 
 			{{csrf_field()}}
 
@@ -40,17 +41,22 @@
 					<div>
 						{{trans('order.need_measure')}}:
 						<br/><br/>
-						<input type="radio" name="needMeasure" value="need" />{{trans('order.yes')}}
+						{{--<input type="radio" name="needMeasure" value="need" />{{trans('order.yes')}}--}}
+						<input type="radio" name="needMeasure" value="1" />{{trans('order.yes')}}
+						{{--needMeasure以及下面的needInstall字段在数据库里都是boolean类型，value能为need或者not_need吗？？？？--}}
 						&nbsp;&nbsp;
-						<input type="radio" name="needMeasure" value="not_need" />{{trans('order.no')}}
+						{{--<input type="radio" name="needMeasure" value="not_need" />{{trans('order.no')}}--}}
+						<input type="radio" name="needMeasure" value="0" checked />{{trans('order.no')}}
 					</div><br/>
 
 					<div>
 						{{trans('order.need_install')}}:
 						<br/><br/>
-						<input type="radio" name="needInstall" value="need" />{{trans('order.yes')}}
+						{{--<input type="radio" name="needInstall" value="need" />{{trans('order.yes')}}--}}
+						<input type="radio" name="needInstall" value="1" />{{trans('order.yes')}}
 						&nbsp;&nbsp;
-						<input type="radio" name="needInstall" value="not_need" />{{trans('order.no')}}
+						{{--<input type="radio" name="needInstall" value="not_need" />{{trans('order.no')}}--}}
+						<input type="radio" name="needInstall" value="0" checked />{{trans('order.no')}}
 					</div>
 				</div>
 				
@@ -69,7 +75,8 @@
 					</button>
 				</div>
 				<div class="col-md-3">
-					<a  class="btn btn-md btn-warning" href="/orders">
+					{{--<a  class="btn btn-md btn-warning" href="/orders">//你写的--}}
+					<a  class="btn btn-md btn-warning" href="/shops/{{ $id }}/orders">
 						{{trans('order.return')}}
 					</a>
 				</div>

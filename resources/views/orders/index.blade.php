@@ -50,8 +50,12 @@
 						<td>{{$order->shop->address}}</td>
 						<td>{{$order->theme}}</td>
 						<td>{{$order->remark}}</td>
+
+						{{--//下面两个不能直接这么写，你应该对这两个值进行判断，如果是1，则‘是’，如果是0,则'否'，不然的话页面显示就是0,1了--}}
 						<td>{{$order->needMeasure}}</td>
 						<td>{{$order->needInstall}}</td>
+
+
 						<td>
 							<a class="btn btn-warning" href="">
 								{{trans('order.order_update')}}

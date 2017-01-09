@@ -68,10 +68,10 @@
                             <td>{{$shop->user->phone}}</td>
                             <td>{{$shop->address}}</td>
                             <td>
-                                <a class="btn btn-success" href="/orders">
+                                <a class="btn btn-success" href="/shops/{{ $shop->id }}/orders">{{--这地方修改了,你的是/orders,主要是$shop->id，像/shops都是无所谓的,现在要去routes.php里面改了--}}
                                     {{trans('shop.check_order')}}
                                 </a>
-                                <a class="btn btn-primary" href="/orders/create">
+                                <a class="btn btn-primary" href="/orders/{{ $shop->id }}/create">{{--这地方修改了,你的是/orders/create--}}
                                     {{trans('shop.add_order')}}
                                 </a>
                             </td>
