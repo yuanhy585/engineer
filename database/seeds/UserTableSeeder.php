@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
             'name'=>'Jack',
             'email'=>'222@163.com',
             'role_id'=>'5',
-            'department_id'=>'1',
+            'department_id'=>'5',
             'password'=>bcrypt('123456'),
             'language_id'=>'1'
         ]);
