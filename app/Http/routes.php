@@ -29,12 +29,11 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('materials/{id}/delete','MaterialController@destroy');
 
         //routes for orders 2017.01.08 problem
-        Route::resource('orders','OrderController');//你单独写resources是不可以的
+//        Route::resource('orders','OrderController');//你单独写resources是不可以的
 
         //下面是我写的，一个是添加订单，一个是查看订单,要保持跟请求的href一致
         Route::get('shops/{id}/orders','OrderController@index');//这里的id就是传过来的shop->id
         Route::get('orders/{id}/create','OrderController@create');//这里的id就是传过来的shop->id
-
         //下面是刚才傻逼地方提交过来的数据
         Route::post('/orders/{id}/store','OrderController@store');
 

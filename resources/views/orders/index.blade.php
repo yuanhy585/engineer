@@ -52,15 +52,27 @@
 						<td>{{$order->remark}}</td>
 
 						{{--//下面两个不能直接这么写，你应该对这两个值进行判断，如果是1，则‘是’，如果是0,则'否'，不然的话页面显示就是0,1了--}}
-						<td>{{$order->needMeasure}}</td>
-						<td>{{$order->needInstall}}</td>
+						<td>
+							@if($order->needMeasure == 1)
+								{{trans('order.yes')}}
+							@elseif($order->needMeasure == 0)
+								{{trans('order.no')}}
+							@endif
+						</td>
+						<td>
+							@if($order->needInstall == 1)
+								{{trans('order.yes')}}
+							@elseif($order->needInstall == 0)
+								{{trans('order.no')}}
+							@endif
+						</td>
 
 
 						<td>
-							<a class="btn btn-warning" href="">
+							<a class="btn btn-warning" href="" style="margin-bottom: 5px;">
 								{{trans('order.order_update')}}
 							</a>
-							<a class="btn btn-info" href="">
+							<a class="btn btn-success" href="">
 								{{trans('order.material_manage')}}
 							</a>
 						</td>
