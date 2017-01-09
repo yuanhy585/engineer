@@ -173,8 +173,6 @@ class ShopController extends Controller
             'province_id','city_id'));
     }
 
-
-
     public function ajxProvince(Request $request)
     {
         $inputs = $request->all();

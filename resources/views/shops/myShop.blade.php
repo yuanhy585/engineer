@@ -68,10 +68,10 @@
                             <td>{{$shop->user->phone}}</td>
                             <td>{{$shop->address}}</td>
                             <td>
-                                <a class="btn btn-success" href="">
+                                <a class="btn btn-success" href="/orders">
                                     {{trans('shop.check_order')}}
                                 </a>
-                                <a class="btn btn-primary" href="">
+                                <a class="btn btn-primary" href="/orders/create">
                                     {{trans('shop.add_order')}}
                                 </a>
                             </td>

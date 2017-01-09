@@ -95,7 +95,6 @@
                     {{trans('shop.return')}}
                 </a>
             </div>
-
         </form>
     </div>
 </div>

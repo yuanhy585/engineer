@@ -19,7 +19,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('shops/{id}/update','ShopController@update');
         Route::get('myshop','ShopController@myShop');
 
-        //routes for users from project department
+        //routes for order_check from department 5
         Route::resource('order_check','OrderCheckController');
 
         //routes for materials
@@ -28,6 +28,11 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('materials/{id}/update','MaterialController@update');
         Route::get('materials/{id}/delete','MaterialController@destroy');
 
+        //routes for orders 2017.01.08 problem
+        Route::resource('orders','OrderController');
+
+
+        
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');

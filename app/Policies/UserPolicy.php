@@ -85,5 +85,13 @@ class UserPolicy
             return false;
     }
 
+    public function manage_order(User $user)
+    {
+        if($user->department_id == 1)
+            return true;
+        else
+            return false;
+    }
 
+    
 }

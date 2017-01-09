@@ -33,9 +33,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @if(Auth::user())
-
-                @if(Auth::user()->department_id == 5)
                 <li class="active"><a href="/">{{trans('home.home')}}</a></li>
+                @if(Auth::user()->department_id == 5)
                 <li><a href="/order_check">{{trans('user.order_check')}}</a></li>
                 <li><a href="">{{trans('user.order_distribution')}}</a></li>
                 <li><a href="">{{trans('user.price_management')}}</a></li>
