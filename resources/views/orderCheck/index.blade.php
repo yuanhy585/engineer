@@ -11,13 +11,28 @@
         <br/><hr/>
     </div>
     <div class="row">
-        <div class="col-md-2 sidebar">
+        <div class="col-md-2">
             <ul class="list-group">
-                @foreach($statuses as $status)
                 <li class="list-group-item">
-                    <a href="">{{$status->name}}</a> <span class="badge">0</span>
+                    <a href="">未联系到销售</a> <span class="badge">{{$number1}}</span>
                 </li>
-                @endforeach
+                <li class="list-group-item">
+                    <a href="">等待销售反馈</a> <span class="badge">{{$number2}}</span>
+                </li><li class="list-group-item">
+                    <a href="">销售已确认</a> <span class="badge">{{$number3}}</span>
+                </li><li class="list-group-item">
+                    <a href="">测量</a> <span class="badge">{{$number4}}</span>
+                </li><li class="list-group-item">
+                    <a href="">出图/报价</a> <span class="badge">{{$number5}}</span>
+                </li><li class="list-group-item">
+                    <a href="">销售确认效果图</a> <span class="badge">{{$number6}}</span>
+                </li><li class="list-group-item">
+                    <a href="">制作</a> <span class="badge">{{$number7}}</span>
+                </li><li class="list-group-item">
+                    <a href="">安装</a> <span class="badge">{{$number8}}</span>
+                </li><li class="list-group-item">
+                    <a href="">完工</a> <span class="badge">{{$number9}}</span>
+                </li>
             </ul>
         </div>
         <div class="col-md-10" style="margin-top:10px;">
