@@ -35,9 +35,21 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('shops/{id}/orders','OrderController@index');//这里的id就是传过来的shop->id
         Route::get('orders/{id}/create','OrderController@create');//这里的id就是传过来的shop->id
         //下面是刚才傻逼地方提交过来的数据
-        Route::post('/orders/{id}/store','OrderController@store');
+        Route::post('orders/{id}/store','OrderController@store');
 
-        
+        //针对订单进行修改，传的参数应该都是order_id，不再是shop_id
+        Route::get('orders/{id}/edit','OrderController@edit');
+        Route::get('orders/{id}/material_index','OrderController@materialIndex');
+        Route::get('orders/{id}/material_add','OrderController@materialAdd');
+        Route::post('orders/{id}/material_store','OrderController@materialStore');
+        Route::post('orders/{id}/update','OrderController@update');
+
+        //管理部人员对销售部人力资源进行管理
+        Route::resource('user/sale','SaleController');
+        Route::post('user/sale/{id}/update','SaleController@update');
+        Route::get('user/sale/{id}/delete','SaleController@destroy');
+        Route::get('mySale','SaleController@saleIndex');
+
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');
@@ -57,10 +69,13 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('ajax/province_city','ShopController@ajxPC');
         Route::post('ajax/province_city_correspondence','ShopController@ajxCorrespondence');
 
+        Route::post('ajax/pc_relation','SaleController@ajxPC');
+        Route::post('ajax/pc_linkage','SaleController@ajaxPClink');
+
     });
 });
 
-//API
+//API 不能放在language中间件里
 Route::group(['prefix'=>'api'],function (){
     Route::get('userList','UserAPIController@getUserList');
 });

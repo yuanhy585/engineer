@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Material;
+use App\MaterialOrder;
+use App\User;
 use Auth, Gate, Redirect;
 use App\Order;
 use App\Shop;
@@ -21,8 +24,9 @@ class OrderController extends Controller
 		//$shop_id = Shop::all()->pluck('id');//这个不对，你是取得了所有的门店，应该是单个的
         $shop_id = $id;
 		$orders = Order::where('shop_id',$shop_id)->get();
+        $shop = Shop::where('id',$shop_id)->first();
 
-		return view('orders.index',compact('orders'));
+		return view('orders.index',compact('orders','shop'));
 	}
 
 	
@@ -32,10 +36,11 @@ class OrderController extends Controller
 	        if(Gate::denies('manage_order', Auth::user()))
 	        {
 	            return Redirect::back();
-	      }
-	        
+	        }
 //	        $id = Shop::all()->pluck('id')->first();//不要这句,直接用传过来的shop->id
-	        return view('orders.create',compact('id'));
+            $order = Order::where('shop_id',$id)->first();
+
+	        return view('orders.create',compact('id','order'));
 	    }
 
 
@@ -59,6 +64,94 @@ class OrderController extends Controller
 
 	    	return redirect('/shops/'.$id.'/orders');//拼接字符串
 	    }
+
+    public function edit($id)
+    {
+        if(Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $order = Order::where('id',$id)->first();
+        $sellers = User::where('department_id',1)->get()->pluck('phone','name');
+        return view('orders.edit',compact('order','sellers'));
+	}
+
+
+    public function update(Request $request, $id)
+    {
+        if (Gate::denies('manage_order',Auth::user()))
+        {
+            return back();
+        }
+        $order = Order::where('id',$id)->first();
+        $inputs = $request->all();
+//        dd($inputs);
+//        以下两字段更新不成功
+//        $order->needMeasure = $inputs['measure'];
+//        $order->needInstall = $inputs['install'];
+        $order->remark = $inputs['remark'];
+        $order->theme = $inputs['theme'];
+        $order->save();
+
+
+        return redirect('/shops/'.$order->shop_id.'/orders');
+    }
+
+
+    public function materialIndex($id)  //$id是orders表中的id
+    {
+        if(Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $order = Order::where('id',$id)->first();
+        $material_orders = MaterialOrder::where('order_id',$id)->get();
+
+        return view('orders.materialIndex',compact('order','material_orders'));
+	}
+
+    public function materialAdd($id)
+    {
+        if(Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $order = Order::where('id',$id)->first();
+        $material_types = Material::all()->pluck('type','id');
+        $material_names = Material::all()->pluck('name','id');
+        $material_order = MaterialOrder::where('order_id',$id)->first();
+        return view('orders.materialAdd',compact('order','material_types',
+            'material_names','material_order'));
+	}
+
+    public function materialStore(Request $request, $id)
+    {
+        if(Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $inputs = $request->all();
+        $materialOrder = new MaterialOrder();
+        $materialOrder->position = $inputs['position'];
+        $materialOrder->width = $inputs['width'];
+        $materialOrder->height = $inputs['height'];
+        $materialOrder->number = $inputs['number'];
+        $materialOrder->remark = $inputs['remark'];
+        $materialOrder->area = $inputs['area'];
+        $materialOrder->material_id = $inputs['material_id'];
+        $materialOrder->order_id = $inputs['order_id'];
+
+        $materialOrder->save();
+
+        return redirect('/orders/'.$id.'/material_index');
+	}
+
+
+
 
 
 }

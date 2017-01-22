@@ -7,6 +7,9 @@
 		</div>
 		<br/><hr/>
 	</div>
+	<a class="btn btn-primary" href="/orders/{{ $shop->id }}/create">
+		{{trans('order.order_create')}}
+	</a>
 	<div class="row">
 		<div class="table" style="margin-top:20px;">
 			<table class="table table-bordered table-striped text-center">
@@ -69,10 +72,11 @@
 
 
 						<td>
-							<a class="btn btn-warning" href="" style="margin-bottom: 5px;">
+							<a class="btn btn-warning" href="/orders/{{$order->id}}/edit"
+							   style="margin-bottom: 5px;">
 								{{trans('order.order_update')}}
 							</a>
-							<a class="btn btn-success" href="">
+							<a class="btn btn-success" href="/orders/{{$order->id}}/material_index">
 								{{trans('order.material_manage')}}
 							</a>
 						</td>

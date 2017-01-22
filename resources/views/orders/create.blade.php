@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="page-title" style="font-size: 30px;">
-
+		<div class="page-title" style="font-size: 30px;text-align: center;">
+			{{$order->shop->name}}
 		</div>
 		<br/><hr/>
 	</div>

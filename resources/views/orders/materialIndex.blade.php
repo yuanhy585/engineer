@@ -2,10 +2,12 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="page-title" style="font-size: 30px;">
-		<p>
-			{{trans('order.orderId')}}:
-		</p>
+		<div class="page-title" style="font-size: 30px; text-align: center;">
+			{{$order->shop->name}}
+		<br/>
+			<h4>
+				{{trans('order.orderId')}}:{{$order->order_id}}
+			</h4>
 		</div>
 		<br/><hr/>
 	</div>
@@ -17,7 +19,12 @@
 		<hr/>
 	</div>
 
-	<a class="btn btn-primary" href="">{{trans('order.add_material')}}</a>
+	<div>
+		<a class="btn btn-primary" href="/orders/{{$order->id}}/material_add">
+			{{trans('order.add_material')}}
+		</a>
+		<br/><br/>
+	</div>
 
 	<div class="table">
 		<table class="table table-bordered table-striped text-center">
@@ -35,22 +42,33 @@
 				</tr>
 			</thead>
 			<tbody>
+			@foreach($material_orders as $material_order)
 				<tr>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
-					<td>{{}}</td>
+					<td>{{$material_order->material->type}}</td>
+					<td>{{$material_order->material->name}}</td>
+					<td>{{$material_order->position}}</td>
+					<td>{{$material_order->width}}</td>
+					<td>{{$material_order->height}}</td>
+					<td>{{$material_order->area}}</td>
+					<td>{{$material_order->number}}</td>
+					<td>{{$material_order->remark}}</td>
+					<td>
+						<a class="btn btn-primary" href="">
+							{{trans('order.update')}}
+						</a>
+						<a class="btn btn-danger" href="">
+							{{trans('order.delete')}}
+						</a>
+					</td>
 				</tr>
+			@endforeach
 			</tbody>
 		</table>
 	</div>
 	<div class="text-center">
-		<button type="submit" class="btn btn-primary">{{trans('order.submit_materialInfo')}}</button>
+		<button type="submit" class="btn btn-primary">
+			{{trans('order.submit_info')}}
+		</button>
 	</div>
 </div>
 @stop

@@ -56,7 +56,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/users">{{trans('user.HR_management')}}</a></li>
-                        <li><a href="">{{trans('department.department1')}}</a></li>
+                        <li><a href="/user/sale">{{trans('department.department1')}}</a></li>
                         <li><a href="">{{trans('department.department2')}}</a></li>
                         <li><a href="">{{trans('department.department3')}}</a></li>
                         <li><a href="">{{trans('department.department4')}}</a></li>
@@ -85,6 +85,23 @@
                 {{--<li><a href=">{{trans('shop.my_shop')}}</a></li>--}}
                 <li><a href="/myshop">{{trans('shop.sale_order_application')}}</a></li>
                 <li><a href="">{{trans('shop.order_administration_detail')}}</a></li>
+                @endif
+
+                @if(Auth::user()->department_id == 2)
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown">
+                            {{trans('management.order_censor')}}<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="">{{trans('management.in_censoring')}}</a></li>
+                            <li><a href="">{{trans('management.censored')}}</a></li>
+                            <li><a href="">{{trans('management.fail')}}</a></li>
+                            <li><a href="">{{trans('management.all')}}</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="">{{trans('management.order_implement_detail')}}</a></li>
+                    <li><a href="/mySale">{{trans('management.my_sale')}}</a></li>
                 @endif
 
                 @endif

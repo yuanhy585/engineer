@@ -29,6 +29,14 @@
                 {!! errors_for('phone',$errors) !!}
                 <br/>
 
+                {{trans('user.city')}}
+                <select name="city_id" class="form-control">
+                    @foreach($cities as $id => $name)
+                    <option name="city_id" value="{{$id}}">{{$name}}</option>
+                    @endforeach
+                </select>
+                <br/>
+
                 {{trans('user.language')}}:
                 <select name="language_id" class="form-control">
                     @foreach($languages as $id=>$title)

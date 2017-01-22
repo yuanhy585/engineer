@@ -49,7 +49,7 @@ return [
     'height'=>'Height',
     'area'=>'Area',
     'number'=>'Number',
-    'submit_materialInfo'=>'Submit MaterialInfo',
+    'submit_info'=>'Submit MaterialInfo',
     'orderId'=>'OrderId',
     'area_size1'=>'Area-Size: (Width mm)(Required)',
     'area_size2'=>'Area-Size: (Height mm)(Required)',
@@ -58,5 +58,10 @@ return [
     'requirement2'=>'Only Numbers',
     'total_area'=>'Total Area: (Square Meter)',
     'auto_calculation'=>'Auto_Calculation',
+    'update'=>'Update',
+    'delete'=>'Delete',
+    'confirm'=>'Confirm',
+    'cancel'=>'Cancel',
+
 
 ];

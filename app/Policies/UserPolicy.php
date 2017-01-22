@@ -93,5 +93,16 @@ class UserPolicy
             return false;
     }
 
+    public function manage_sale(User $user)
+    {
+        if ($user->department_id == 2 )
+            return true;
+        else
+            return false;
+    }
+
+
+
+
     
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\City;
 use App\Department;
 use App\Language;
 use App\User;
@@ -42,9 +43,10 @@ class UserController extends Controller
 
     public function create()
     {
+        $cities = City::all()->pluck('name','id');
         $departments = Department::all()->pluck('title','id');
         $languages = Language::all()->pluck('title','id');
-        return view('users.create',compact('departments','languages'));
+        return view('users.create',compact('cities','departments','languages'));
     }
 
     public function store(Request $request)
@@ -67,6 +69,7 @@ class UserController extends Controller
             return Redirect::back()->withErrors(['phone'=>trans('user.error_tag')])->withInput();
         }
         $user->phone = $inputs['phone'];
+        $user->city_id = $inputs['city_id'];
         $user->language_id = $inputs['language_id'];
         $user->department_id = $inputs['department_id'];
         $user->save();

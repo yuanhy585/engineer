@@ -47,7 +47,7 @@ return [
     'height'=>'高度',
     'area'=>'面积',
     'number'=>'数量',
-    'submit_materialInfo'=>'提交物料信息',
+    'submit_info'=>'提交物料信息',
     'orderId'=>'订单号',
     'area_size1'=>'画面尺寸:(宽mm)(必填项)',
     'area_size2'=>'画面尺寸:(高mm)(必填项)',
@@ -56,4 +56,12 @@ return [
     'requirement2'=>'只能输入数字',
     'total_area'=>'总面积:(平方米)',
     'auto_calculation'=>'自动计算',
+    'update'=>'更新',
+    'delete'=>'删除',
+    'confirm'=>'确认更新',
+    'cancel'=>'取消更新',
+
+
+
+
 ];

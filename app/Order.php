@@ -20,4 +20,10 @@ class Order extends Model
     {
         return $this->belongsTo('App\Stop');
     }
+
+    public function materialOrder()
+    {
+        return $this->hasMany('App\MaterialOrder');
+    }
+
 }

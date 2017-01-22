@@ -8,6 +8,7 @@ return[
     'real_name'=>'姓名',
     'role'=>'角色',
     'phone'=>'联系方式',
+    'city'=>'城市',
     'language'=>'语言',
     'department'=>'部门',
     'new_password'=>'新密码',

@@ -6,6 +6,7 @@ return[
     'real_name'=>'Name',
     'role'=>'Role',
     'phone'=>'Phone',
+    'city'=>'City',
     'language'=>'Language',
     'department'=>'Department',
     'new_password'=>'New Password',
