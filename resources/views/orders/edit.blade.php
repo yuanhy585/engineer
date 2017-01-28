@@ -53,17 +53,17 @@
                         @if($order->needMeasure == 1)
                             {{trans('order.yes')}}
                             <input type="radio" name="measure"
-                                   value="{{$order->needMeasure}}" checked/>
+                                   value="1" checked/>
                             {{trans('order.no')}}
                             <input type="radio" name="measure"
-                                   value="{{$order->needMeasure}}"/>
+                                   value="0"/>
                         @elseif($order->needMeasure == 0)
                             {{trans('order.yes')}}
                             <input type="radio" name="measure"
-                                   value="{{$order->needMeasure}}" />
+                                   value="1" />
                             {{trans('order.no')}}
                             <input type="radio" name="measure"
-                                   value="{{$order->needMeasure}}" checked/>
+                                   value="0" checked/>
                         @endif
 
                         <br/><br/>
@@ -74,17 +74,17 @@
                         @if($order->needInstall == 1)
                             {{trans('order.yes')}}
                             <input type="radio" name="install"
-                                   value="{{$order->needInstall}}" checked/>
-                            {{trans('order.yes')}}
+                                   value="1" checked/>
+                            {{trans('order.no')}}
                             <input type="radio" name="install"
-                                   value="{{$order->needInstall}}" />
+                                   value="0" />
                         @elseif($order->needInstall == 0)
                             {{trans('order.yes')}}
                             <input type="radio" name="install"
-                                   value="{{$order->needInstall}}"/>
+                                   value="1"/>
                             {{trans('order.no')}}
                             <input type="radio" name="install"
-                                   value="{{$order->needInstall}}" checked/>
+                                   value="0" checked/>
                         @endif
                         <br/><br/><br/>
                     </div>

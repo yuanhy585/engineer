@@ -70,7 +70,7 @@ return [
     'confirm'=>'确认更新',
     'cancel'=>'取消更新',
 
-
+    'material_order_update'=>'物料订单更新'
 
 
 ];
