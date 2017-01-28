@@ -72,5 +72,7 @@ return [
     'confirm'=>'Confirm',
     'cancel'=>'Cancel',
 
+    'material_order_update'=>'Update Material Order',
+
 
 ];
