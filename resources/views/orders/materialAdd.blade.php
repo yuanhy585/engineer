@@ -1,4 +1,10 @@
 @extends('layout')
+
+@section('js')
+<script src="/js/linkage.js"></script>
+<script src="/js/autocal.js"></script>
+@append
+
 @section('content')
 <div class="container">
 	<div class="row">
@@ -34,18 +40,18 @@
 			<div class="row">
 				<div class="col-md-5">
 					{{trans('order.material_type')}}:
-					<select name="type" class="form-control">
-						@foreach($material_types as $id=>$material_type)
-							<option value="{{$id}}">{{$material_type}}</option>
+					<select id="type" name="type" class="form-control">
+						@foreach($material_types as $id=>$type)
+							<option value="{{$type}}">{{$type}}</option>
 						@endforeach
 					</select>
 				</div>
 
 				<div class="col-md-5">
 					{{trans('order.material_name')}}:
-					<select name="name" class="form-control">
+					<select id="name" name="name" class="form-control">
 						@foreach($material_names as $id=>$name)
-							<option value="{{$id}}">{{$name}}</option>
+							<option value="{{$name}}">{{$name}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -59,7 +65,7 @@
 
 				<div class="col-md-5" style="margin-top:10px;">
 					{{trans('order.area_size1')}}
-					<input type="text" name="width"  class="form-control"
+					<input type="text" name="width"  class="form-control" onkeyup="calculateNum()"
 						   placeholder="{{trans('order.requirement1')}}" />
 {{--					{!! errors_for('width',$errors) !!}--}}
 				</div>
@@ -69,14 +75,14 @@
 				<div class="row col-md-5" style="margin-top:10px;margin-left: 1px;">
 					<div>
 						{{trans('order.area_size2')}}
-						<input type="text" name="height"  class="form-control"
+						<input type="text" name="height"  class="form-control" onkeyup="calculateNum()"
 							   placeholder="{{trans('order.requirement1')}}" />
 {{--						{!! errors_for('height',$errors) !!}--}}
 					</div>
 
 					<div style="margin-top:20px;">
 						{{trans('order.numberInput')}}
-						<input type="text" name="number"  class="form-control"
+						<input type="text" name="number"  class="form-control" onkeyup="calculateNum()"
 							   placeholder="{{trans('order.requirement2')}}" />
 {{--						{!! errors_for('number',$errors) !!}--}}
 					</div>
@@ -94,7 +100,7 @@
 			<div class="row">
 				<div class="col-md-5" style="margin-top:10px;">
 					{{trans('order.total_area')}}
-						<input type="text" name="area"  class="form-control"
+						<input type="text" name="area"  class="form-control" id="area"
 							   placeholder="{{trans('order.auto_calculation')}}" />
 				</div>
 			</div>
