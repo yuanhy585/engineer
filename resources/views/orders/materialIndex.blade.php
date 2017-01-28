@@ -56,7 +56,7 @@
 						<a class="btn btn-primary" href="">
 							{{trans('order.update')}}
 						</a>
-						<a class="btn btn-danger" href="">
+						<a class="btn btn-danger" href="/material_order/{{$material_order->id}}/delete">
 							{{trans('order.delete')}}
 						</a>
 					</td>

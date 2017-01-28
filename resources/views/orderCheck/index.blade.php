@@ -14,24 +14,33 @@
         <div class="col-md-2">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="">未联系到销售</a> <span class="badge">{{$number1}}</span>
+                    <a href="">{{trans('order.not_contact_seller')}}</a>
+                    <span class="badge">{{$number1}}</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="">等待销售反馈</a> <span class="badge">{{$number2}}</span>
+                    <a href="">{{trans('order.waiting_feedback')}}</a>
+                    <span class="badge">{{$number2}}</span>
                 </li><li class="list-group-item">
-                    <a href="">销售已确认</a> <span class="badge">{{$number3}}</span>
+                    <a href="">{{trans('order.seller_confirmed')}}</a>
+                    <span class="badge">{{$number3}}</span>
                 </li><li class="list-group-item">
-                    <a href="">测量</a> <span class="badge">{{$number4}}</span>
+                    <a href="">{{trans('order.measure')}}</a>
+                    <span class="badge">{{$number4}}</span>
                 </li><li class="list-group-item">
-                    <a href="">出图/报价</a> <span class="badge">{{$number5}}</span>
+                    <a href="">{{trans('order.picture/offer')}}</a>
+                    <span class="badge">{{$number5}}</span>
                 </li><li class="list-group-item">
-                    <a href="">销售确认效果图</a> <span class="badge">{{$number6}}</span>
+                    <a href="">{{trans('order.seller_confirm_picEffect')}}</a>
+                    <span class="badge">{{$number6}}</span>
                 </li><li class="list-group-item">
-                    <a href="">制作</a> <span class="badge">{{$number7}}</span>
+                    <a href="">{{trans('order.in_making')}}</a>
+                    <span class="badge">{{$number7}}</span>
                 </li><li class="list-group-item">
-                    <a href="">安装</a> <span class="badge">{{$number8}}</span>
+                    <a href="">{{trans('order.set_up')}}</a>
+                    <span class="badge">{{$number8}}</span>
                 </li><li class="list-group-item">
-                    <a href="">完工</a> <span class="badge">{{$number9}}</span>
+                    <a href="">{{trans('order.finished')}}</a>
+                    <span class="badge">{{$number9}}</span>
                 </li>
             </ul>
         </div>

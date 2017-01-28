@@ -120,8 +120,9 @@ class OrderController extends Controller
         }
 
         $order = Order::where('id',$id)->first();
-        $material_types = Material::all()->pluck('type','id');
-        $material_names = Material::all()->pluck('name','id');
+        // 去重-pluck()中两个参数名字相同
+        $material_types = Material::all()->pluck('type','type');
+        $material_names = Material::all()->pluck('name');
         $material_order = MaterialOrder::where('order_id',$id)->first();
         return view('orders.materialAdd',compact('order','material_types',
             'material_names','material_order'));
@@ -150,8 +151,24 @@ class OrderController extends Controller
         return redirect('/orders/'.$id.'/material_index');
 	}
 
+    public function materialDelete($id)
+    {
+        if (Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+        $material_order = MaterialOrder::where('id',$id)->first();
+        $material_order->delete();
 
+        return back();
+    }
 
+    public function ajaxTN(Request $request)
+    {
+        $inputs = $request->all();
+        $names = Material::where('type',$inputs['type'])->get();
 
+        return $names;
+    }
 
 }

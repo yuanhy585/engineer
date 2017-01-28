@@ -143,6 +143,7 @@
 <div class="js">
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+
     @yield('js')
 </div>
 </body>

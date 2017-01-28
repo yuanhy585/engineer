@@ -22,6 +22,7 @@ Route::group(['middleware'=>'language'],function(){
         //routes for order_check from department 5
         Route::resource('order_check','OrderCheckController');
 
+
         //routes for materials
         Route::resource('materials','MaterialController');
         Route::get('materials/{id}/edit','MaterialController@edit');
@@ -42,6 +43,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('orders/{id}/material_index','OrderController@materialIndex');
         Route::get('orders/{id}/material_add','OrderController@materialAdd');
         Route::post('orders/{id}/material_store','OrderController@materialStore');
+        Route::get('material_order/{id}/delete','OrderController@materialDelete');
         Route::post('orders/{id}/update','OrderController@update');
 
         //管理部人员对销售部人力资源进行管理
@@ -71,6 +73,8 @@ Route::group(['middleware'=>'language'],function(){
 
         Route::post('ajax/pc_relation','SaleController@ajxPC');
         Route::post('ajax/pc_linkage','SaleController@ajaxPClink');
+
+        Route::post('ajax/type_name','OrderController@ajaxTN');
 
     });
 });
