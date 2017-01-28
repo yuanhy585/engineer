@@ -85,11 +85,10 @@ class OrderController extends Controller
             return back();
         }
         $order = Order::where('id',$id)->first();
+
         $inputs = $request->all();
-//        dd($inputs);
-//        以下两字段更新不成功
-//        $order->needMeasure = $inputs['measure'];
-//        $order->needInstall = $inputs['install'];
+        $order->needMeasure = $inputs['measure'];
+        $order->needInstall = $inputs['install'];
         $order->remark = $inputs['remark'];
         $order->theme = $inputs['theme'];
         $order->save();
@@ -149,6 +148,40 @@ class OrderController extends Controller
         $materialOrder->save();
 
         return redirect('/orders/'.$id.'/material_index');
+	}
+
+    public function materialEdit($id)
+    {
+        if(Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $material_types = Material::all()->pluck('type','type');
+        $material_names = Material::all()->pluck('name');
+        $material_order = MaterialOrder::where('id',$id)->first();
+        return view('orders.materialEdit',compact('material_types','material_names',
+            'material_order'));
+	}
+
+    public function materialUpdate(Request $request, $id)
+    {
+        if (Gate::denies('manage_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $material_order = MaterialOrder::where('id',$id)->first();
+        $inputs = $request->all();
+        $material_order->position = $inputs['position'];
+        $material_order->width = $inputs['width'];
+        $material_order->height = $inputs['height'];
+        $material_order->area = $inputs['area'];
+        $material_order->number = $inputs['number'];
+        $material_order->remark = $inputs['remark'];
+        $material_order->save();
+
+        return redirect('/orders/'.$material_order->order_id.'/material_index');
 	}
 
     public function materialDelete($id)

@@ -43,8 +43,11 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('orders/{id}/material_index','OrderController@materialIndex');
         Route::get('orders/{id}/material_add','OrderController@materialAdd');
         Route::post('orders/{id}/material_store','OrderController@materialStore');
-        Route::get('material_order/{id}/delete','OrderController@materialDelete');
         Route::post('orders/{id}/update','OrderController@update');
+        //material_order operation
+        Route::get('material_order/{id}/edit', 'OrderController@materialEdit');
+        Route::post('materialOrder/{id}/update','OrderController@materialUpdate');
+        Route::get('material_order/{id}/delete','OrderController@materialDelete');
 
         //管理部人员对销售部人力资源进行管理
         Route::resource('user/sale','SaleController');

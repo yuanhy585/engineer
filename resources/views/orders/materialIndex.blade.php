@@ -53,7 +53,7 @@
 					<td>{{$material_order->number}}</td>
 					<td>{{$material_order->remark}}</td>
 					<td>
-						<a class="btn btn-primary" href="">
+						<a class="btn btn-primary" href="/material_order/{{$material_order->id}}/edit">
 							{{trans('order.update')}}
 						</a>
 						<a class="btn btn-danger" href="/material_order/{{$material_order->id}}/delete">
