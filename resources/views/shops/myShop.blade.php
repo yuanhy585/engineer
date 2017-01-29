@@ -9,10 +9,10 @@
             <div class="page_title">
                 <span style="font-size: 30px;">{{trans('shop.my_shop')}}</span>
                 <span style="color:red;">
-                    ( {{trans('shop.total_orders')}}:<span>0</span>&nbsp;&nbsp;
-                    {{trans('shop.in_censoring')}}:<span>0</span>&nbsp;&nbsp;
-                    {{trans('shop.passed')}}:<span>0</span>&nbsp;&nbsp;
-                    {{trans('shop.failed')}}:<span>0</span> )
+                    ( {{trans('shop.total_orders')}}:<span>{{$total_order}}</span>&nbsp;&nbsp;
+                    {{trans('shop.in_censoring')}}:<span>{{$number1}}</span>&nbsp;&nbsp;
+                    {{trans('shop.passed')}}:<span>{{$number2}}</span>&nbsp;&nbsp;
+                    {{trans('shop.failed')}}:<span>{{$number3}}</span> )
                 </span>
             </div>
             <br/><hr/>

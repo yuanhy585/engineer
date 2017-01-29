@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use App\City;
+use App\Order;
 use App\Province;
 use App\Region;
 use App\Shop;
@@ -166,11 +167,15 @@ class ShopController extends Controller
         $regions = Region::all()->pluck('name','id');
         $provinces = Province::all()->pluck('name','id');
         $cities = City::all()->pluck('name','id');
-
         $province_id = isset($inputs['province'])?$inputs['province']:1;
         $city_id = isset($inputs['city'])?$inputs['city']:169;
+        //销售部门能见的订单审核情况以市场部的active2为判断标准，1-待审核，2-审核通过，3-审核未通过
+        $total_order = Order::whereIn('shop_id',Shop::where('user_id',Auth::user()->id)->pluck('id'))->count();
+        $number1 = Order::whereIn('shop_id',Shop::where('user_id',Auth::user()->id)->pluck('id'))->where('active2',1)->count();
+        $number2 = Order::whereIn('shop_id',Shop::where('user_id',Auth::user()->id)->pluck('id'))->where('active2',2)->count();
+        $number3 = Order::whereIn('shop_id',Shop::where('user_id',Auth::user()->id)->pluck('id'))->where('active2',3)->count();
         return view('shops.myShop',compact('a','shops','regions','provinces','cities',
-            'province_id','city_id'));
+            'province_id','city_id','total_order','number1','number2','number3'));
     }
 
     public function ajxProvince(Request $request)
