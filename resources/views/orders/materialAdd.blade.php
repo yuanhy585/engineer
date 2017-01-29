@@ -72,21 +72,21 @@
 				<div class="row col-md-5" style="margin-top:10px;margin-left: 1px;">
 					<div>
 						{{trans('order.area_size2')}}
-						<input type="text" name="height"  class="form-control" onkeyup="calculateNum()"
+						<input type="text" name="height" class="form-control" onkeyup="calculateNum()"
 							   placeholder="{{trans('order.requirement1')}}" />
 {{--						{!! errors_for('height',$errors) !!}--}}
 					</div>
 
 					<div style="margin-top:20px;">
 						{{trans('order.numberInput')}}
-						<input type="text" name="number"  class="form-control" onkeyup="calculateNum()"
+						<input type="text" name="number" class="form-control" onkeyup="calculateNum()"
 							   placeholder="{{trans('order.requirement2')}}" />
 {{--						{!! errors_for('number',$errors) !!}--}}
 					</div>
 				</div>
 
 				<div class="row col-md-5" style="margin-top:10px;margin-left: 15px;">
-					<div>
+					<div class="form-group">
 						{{trans('order.remark')}}:
 						<textarea class="form-control" cols="10" rows="5" name="remark"></textarea>
 					</div>
@@ -97,7 +97,7 @@
 			<div class="row">
 				<div class="col-md-5" style="margin-top:10px;">
 					{{trans('order.total_area')}}
-						<input type="text" name="area"  class="form-control" id="area"
+						<input type="text" name="area" class="form-control" id="area"
 							   placeholder="{{trans('order.auto_calculation')}}" />
 				</div>
 			</div>

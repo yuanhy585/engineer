@@ -62,8 +62,8 @@
                 <input type="text" name="width" class="form-control" style="margin-bottom: 10px;" onkeyup="calculateNum()"
                        value="{{$material_order->width}}" />
 
-                {{trans('order.remark')}}:
-                <textarea cols="10" rows="5" name="remark" class="form-control" style="margin-bottom: 10px;">
+                    {{trans('order.remark')}}:
+                    <textarea rows="8" cols="10" name="remark" class="form-control">
                     {{$material_order->remark}}
                 </textarea>
             </div>
