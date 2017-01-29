@@ -93,12 +93,11 @@
                             {{trans('management.order_censor')}}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="">{{trans('management.in_censoring')}}</a></li>
+                            <li><a href="/dmOrders/order_in_censor">{{trans('management.in_censoring')}}</a></li>
                             <li><a href="">{{trans('management.censored')}}</a></li>
                             <li><a href="">{{trans('management.fail')}}</a></li>
-                            <li><a href="">{{trans('management.all')}}</a></li>
+                            <li><a href="/dmOrders/all">{{trans('management.all')}}</a></li>
                         </ul>
-
                     </li>
                     <li><a href="">{{trans('management.order_implement_detail')}}</a></li>
                     <li><a href="/mySale">{{trans('management.my_sale')}}</a></li>
@@ -143,7 +142,6 @@
 <div class="js">
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-
     @yield('js')
 </div>
 </body>

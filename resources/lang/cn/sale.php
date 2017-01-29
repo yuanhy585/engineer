@@ -24,8 +24,13 @@ return [
     'update_submit'=>'更新',
     'cancel'=>'取消',
 
+    'orders_check_and_censor'=>'DM订单查看及审核',
+    'censoring_orders'=>'待审核订单',
+    'censored_orders'=>'已审核订单',
+    'failed_orders'=>'审核未通过订单',
 
-
+    'input_shop_user'=>'请输入门店联系人',
+    'search'=>'搜索',
 
 
 ];

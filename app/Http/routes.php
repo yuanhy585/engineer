@@ -56,7 +56,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('mySale','SaleController@saleIndex');
 
         Route::get('dmOrders/all','SaleController@all');
-        Route::get('dmOrders/order_in_censor','SaleController@censor');
+//        Route::get('dmOrders/order_in_censor','SaleController@censor');
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');

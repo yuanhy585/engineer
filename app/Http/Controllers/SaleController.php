@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use App\City;
 use App\DmUser;
 use App\Language;
+use App\Order;
 use App\Province;
+use App\Region;
+use App\Shop;
 use App\User;
 use Auth, Gate, Redirect;
 
@@ -143,23 +146,32 @@ class SaleController extends Controller
         return view('sales.saleIndex',compact('users'));
     }
 
-
-
-
-    public function ajxPC(Request $request)
+    public function all()
     {
-        $inputs = $request->all();
-        $cities = City::where('province_id',$inputs['province_id'])->get();
+        if (Gate::denies('manage_sale',Auth::user()))
+        {
+            return Redirect::back();
+        }
 
-        return $cities;
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
+        $seller_ids = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))->pluck('id');
+        $orders = Order::whereIn('shop_id', Shop::whereIn('user_id',$seller_ids)->pluck('id'))->get();
+
+
+        return view('sales.dmOrders',compact('regions','provinces','cities','province_id',
+            'city_id','orders'));
     }
 
-    public function ajaxPClink(Request $request)
-    {
-        $inputs = $request->all();
-        $cities = City::where('province_id',$inputs['province_id'])->get();
 
-        return $cities;
+
+    public function censor()
+    {
+
     }
+
 
 }
