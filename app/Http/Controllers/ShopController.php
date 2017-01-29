@@ -178,21 +178,7 @@ class ShopController extends Controller
             'province_id','city_id','total_order','number1','number2','number3'));
     }
 
-    public function ajxProvince(Request $request)
-    {
-        $inputs = $request->all();
-        $cities = City::where('province_id', $inputs['province_id'])->get();
 
-        return $cities;
-    }
-
-
-    public function ajxCorrelation(Request $request)
-    {
-        $inputs = $request->all();
-        $cities = City::where('province_id',$inputs['province_id'])->get();
-        return $cities;
-    }
     public function ajxPC(Request $request)
     {
         $inputs = $request->all();
@@ -200,10 +186,4 @@ class ShopController extends Controller
         return $cities;
     }
 
-    public function ajxCorrespondence(Request $request)
-    {
-        $inputs = $request->all();
-        $cities = City::where('province_id',$inputs['province_id'])->get();
-        return $cities;
-    }
 }

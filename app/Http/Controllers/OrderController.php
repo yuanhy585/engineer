@@ -55,11 +55,13 @@ class OrderController extends Controller
 	    	$order= new Order();
 	    	$order->order_id = $inputs['order_id'];
 	    	$order->shop_id = $inputs['shop_id'];
-	    	$order->orderCode = $inputs['orderCode'];
-	    	$order->theme = $inputs['theme'];
+            //对可为空的字段需要用isset()进行条件判断，默认为none的字段不用，
+            //      但手动添加内容除外。此时需要用errors_for()进行提示
+	    	$order->orderCode = isset($inputs['orderCode'])?$inputs['orderCode']:"";
+	    	$order->theme = isset($inputs['theme'])?$inputs['theme']:"";
 	    	$order->needMeasure = $inputs['needMeasure'];
 	    	$order->needInstall = $inputs['needInstall'];
-	    	$order->remark = $inputs['remark'];
+	    	$order->remark = isset($inputs['remark'])?$inputs['remark']:"";
 	    	$order->save();
 
 	    	return redirect('/shops/'.$id.'/orders');//拼接字符串
@@ -89,8 +91,8 @@ class OrderController extends Controller
         $inputs = $request->all();
         $order->needMeasure = $inputs['measure'];
         $order->needInstall = $inputs['install'];
-        $order->remark = $inputs['remark'];
-        $order->theme = $inputs['theme'];
+        $order->remark = isset($inputs['remark'])?$inputs['remark']:"";
+        $order->theme = isset($inputs['theme'])?$inputs['theme']:"";
         $order->save();
 
 
@@ -121,7 +123,7 @@ class OrderController extends Controller
         $order = Order::where('id',$id)->first();
         // 去重-pluck()中两个参数名字相同
         $material_types = Material::all()->pluck('type','type');
-        $material_names = Material::all()->pluck('name');
+        $material_names = Material::all()->pluck('name','id');
         $material_order = MaterialOrder::where('order_id',$id)->first();
         return view('orders.materialAdd',compact('order','material_types',
             'material_names','material_order'));
@@ -136,13 +138,13 @@ class OrderController extends Controller
 
         $inputs = $request->all();
         $materialOrder = new MaterialOrder();
-        $materialOrder->position = $inputs['position'];
-        $materialOrder->width = $inputs['width'];
-        $materialOrder->height = $inputs['height'];
+        $materialOrder->position = isset($inputs['position'])?$inputs['position']:"";
+        $materialOrder->width = isset($inputs['width'])?$inputs['width']:"";
+        $materialOrder->height = isset($inputs['height'])?$inputs['height']:"";
         $materialOrder->number = $inputs['number'];
-        $materialOrder->remark = $inputs['remark'];
+        $materialOrder->remark = isset($inputs['remark'])?$inputs['remark']:"";
         $materialOrder->area = $inputs['area'];
-        $materialOrder->material_id = $inputs['material_id'];
+        $materialOrder->material_id = $inputs['name'];
         $materialOrder->order_id = $inputs['order_id'];
 
         $materialOrder->save();
@@ -158,7 +160,8 @@ class OrderController extends Controller
         }
 
         $material_types = Material::all()->pluck('type','type');
-        $material_names = Material::all()->pluck('name');
+        $material_names = Material::all()->pluck('name','id');
+//        dd($material_names);
         $material_order = MaterialOrder::where('id',$id)->first();
         return view('orders.materialEdit',compact('material_types','material_names',
             'material_order'));
@@ -172,14 +175,18 @@ class OrderController extends Controller
         }
 
         $material_order = MaterialOrder::where('id',$id)->first();
+
         $inputs = $request->all();
-        $material_order->position = $inputs['position'];
-        $material_order->width = $inputs['width'];
-        $material_order->height = $inputs['height'];
+        $material_order->material_id = $inputs['name'];
+        $material_order->position = isset($inputs['position'])?$inputs['position']:"";
+        $material_order->width = isset($inputs['width'])?$inputs['width']:"";
+        $material_order->height = isset($inputs['height'])?$inputs['height']:"";
         $material_order->area = $inputs['area'];
         $material_order->number = $inputs['number'];
-        $material_order->remark = $inputs['remark'];
+        $material_order->remark = isset($inputs['remark'])?$inputs['remark']:"";
         $material_order->save();
+
+//        dd($material_order);
 
         return redirect('/orders/'.$material_order->order_id.'/material_index');
 	}

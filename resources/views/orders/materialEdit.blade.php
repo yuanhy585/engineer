@@ -1,4 +1,10 @@
 @extends('layout')
+
+@section('js')
+<script src="/js/linkage.js"></script>
+<script src="/js/autocal.js"></script>
+@append
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -15,10 +21,12 @@
 
             <div  class="col-md-5" style="margin-bottom: 10px;">
                 {{trans('order.material_type')}}:
-                <select class="form-control" name="type" style="margin-bottom: 10px;">
+                <select class="form-control" name="type" id="type" style="margin-bottom: 10px;">
                     @foreach($material_types as $type)
-                        <option @if($material_order->material->type == $type) selected @endif
-                                value="{{$type}}">{{$type}}</option>
+                        <option @if(\App\Material::where('id',$material_order->material_id)->first()->type == $type)
+                                selected @endif value="{{$type}}">
+                            {{$type}}
+                        </option>
                     @endforeach
                 </select>
 
@@ -27,11 +35,11 @@
                        value="{{$material_order->position}}" />
 
                 {{trans('order.area_size2')}}
-                <input type="text" name="height" class="form-control" style="margin-bottom: 10px;"
+                <input type="text" name="height" class="form-control" style="margin-bottom: 10px;" onkeyup="calculateNum()"
                        value="{{$material_order->height}}" />
 
                 {{trans('order.numberInput')}}
-                <input type="text" name="number" class="form-control" style="margin-bottom: 10px;"
+                <input type="text" name="number" class="form-control" style="margin-bottom: 10px;" onkeyup="calculateNum()"
                        value="{{$material_order->number}}" />
 
                 {{trans('order.total_area')}}
@@ -41,17 +49,17 @@
 
             <div  class="col-md-5">
                 {{trans('order.material_name')}}:
-                <select class="form-control" name="name" style="margin-bottom: 10px;">
-                    @foreach($material_names as $name)
-                        <option @if($material_order->material->name == $name) selected @endif
-                        value="{{$name}}">
+                <select class="form-control" name="name" id="name" style="margin-bottom: 10px;">
+                    @foreach($material_names as $id => $name)
+                        <option @if($material_order->material_id == $id) selected @endif
+                        value="{{$id}}">
                             {{$name}}
                         </option>
                     @endforeach
                 </select>
 
                 {{trans('order.area_size1')}}
-                <input type="text" name="width" class="form-control" style="margin-bottom: 10px;"
+                <input type="text" name="width" class="form-control" style="margin-bottom: 10px;" onkeyup="calculateNum()"
                        value="{{$material_order->width}}" />
 
                 {{trans('order.remark')}}:

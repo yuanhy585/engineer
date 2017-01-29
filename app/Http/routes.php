@@ -55,6 +55,8 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('user/sale/{id}/delete','SaleController@destroy');
         Route::get('mySale','SaleController@saleIndex');
 
+        Route::get('dmOrders/all','SaleController@all');
+        Route::get('dmOrders/order_in_censor','SaleController@censor');
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');
@@ -69,14 +71,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('status/data_import','ImportController@statusReceive');
 
 
-        Route::post('ajax/province','ShopController@ajxProvince');
-        Route::post('ajax/province_city_correlation','ShopController@ajxCorrelation');
         Route::post('ajax/province_city','ShopController@ajxPC');
-        Route::post('ajax/province_city_correspondence','ShopController@ajxCorrespondence');
-
-        Route::post('ajax/pc_relation','SaleController@ajxPC');
-        Route::post('ajax/pc_linkage','SaleController@ajaxPClink');
-
         Route::post('ajax/type_name','OrderController@ajaxTN');
 
     });

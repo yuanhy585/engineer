@@ -44,7 +44,7 @@
 			<tbody>
 			@foreach($material_orders as $material_order)
 				<tr>
-					<td>{{$material_order->material->type}}</td>
+					<td>{{\App\Material::where('id',$material_order->material_id)->first()->type}}</td>
 					<td>{{$material_order->material->name}}</td>
 					<td>{{$material_order->position}}</td>
 					<td>{{$material_order->width}}</td>

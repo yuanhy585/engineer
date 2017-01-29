@@ -31,10 +31,7 @@
 
 			{{csrf_field()}}
 
-{{--			{{$materialOrder->material->id}}--}}
-			<input type="hidden" name="material_id"
-				   value="3"/>
-			{{--下面这个到底是第几个订单还是订单号？？order_id != $order->id.我用的是order->id--}}
+			{{--material_orders表中的order_id = $order->id--}}
 			<input type="hidden" name="order_id" value="{{$order->id}}" />
 
 			<div class="row">
@@ -50,8 +47,8 @@
 				<div class="col-md-5">
 					{{trans('order.material_name')}}:
 					<select id="name" name="name" class="form-control">
-						@foreach($material_names as $id=>$name)
-							<option value="{{$name}}">{{$name}}</option>
+						@foreach($material_names as $id => $name)
+							<option value="{{$id}}">{{$name}}</option>
 						@endforeach
 					</select>
 				</div>
