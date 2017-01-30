@@ -261,4 +261,59 @@ class SaleController extends Controller
             'city_id','a','users','orders'));
     }
 
+    public function marketCensor()
+    {
+        if (Gate::denies('censor_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+
+//        $regions = Region::all()->pluck('name','id');
+//        $provinces = Province::all()->pluck('name','id');
+//        $cities = City::all()->pluck('name','id');
+//        $province_id = 1;
+//        $city_id = 169;
+        $orders = Order::where('active1',2)->where('active2',1)->get();
+        return view('sales.marketCensor',compact('orders'));
+    }
+
+    public function marketCensored()
+    {
+        if (Gate::denies('censor_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+//        $regions = Region::all()->pluck('name','id');
+//        $provinces = Province::all()->pluck('name','id');
+//        $cities = City::all()->pluck('name','id');
+//        $province_id = 1;
+//        $city_id = 169;
+        $orders = Order::where('active1',2)->where('active2',2)->get();
+        return view('sales.marketCensored',compact('orders'));
+    }
+
+    public function failOrder()
+    {
+        if (Gate::denies('censor_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $orders = Order::where('active1',2)->where('active2',3)->get();
+        return view('sales.marketFailed',compact('orders'));
+    }
+
+    public function getMarketOrders()
+    {
+        if (Gate::denies('censor_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $orders = Order::where('active1',2)->get();
+        return view('sales.marketOrders',compact('orders'));
+    }
+
 }

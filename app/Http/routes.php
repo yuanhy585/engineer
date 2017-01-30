@@ -59,6 +59,10 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('dmOrders/order_in_censor','SaleController@censor');
         Route::get('dmOrders/order_censored','SaleController@censored');
         Route::get('dmOrders/order_failed','SaleController@fail');
+        Route::get('orderMarketCensoring','SaleController@marketCensor');
+        Route::get('orderMarketCensored','SaleController@marketCensored');
+        Route::get('orderMarketFail','SaleController@failOrder');
+        Route::get('orderMarketAll','SaleController@getMarketOrders');
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');

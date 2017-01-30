@@ -101,8 +101,13 @@ class UserPolicy
             return false;
     }
 
-
-
+    public function censor_order(User $user)
+    {
+        if($user->department_id == 3)
+            return true;
+        else
+            return false;
+    }
 
     
 }

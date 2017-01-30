@@ -103,6 +103,21 @@
                     <li><a href="/mySale">{{trans('management.my_sale')}}</a></li>
                 @endif
 
+                @if(Auth::user()->department_id == 3)
+                        <li class="dropdown">
+                            <a href="" data-toggle="dropdown">
+                                订单审核情况
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/orderMarketCensoring">待审核</a></li>
+                                <li><a href="/orderMarketCensored">审核通过订单</a></li>
+                                <li><a href="/orderMarketFail">审核未通过订单</a></li>
+                                <li><a href="/orderMarketAll">所有订单</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">订单详情</a></li>
+                @endif
+
                 @endif
             </ul>
 
