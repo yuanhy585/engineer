@@ -177,10 +177,88 @@ class SaleController extends Controller
 
 
 
-    public function censor()
+    public function censor(Request $request)
     {
+        if (Gate::denies('manage_sale',Auth::user()))
+        {
+            return Redirect::back();
+        }
 
+        $inputs = $request->has('select')?json_decode($request->input('select',true)):$request->all();
+        $a = $inputs;
+        $users = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))
+            ->where(function($query)use($inputs){
+                if(isset($inputs['findByUserName'])){
+                    $query->where('name','LIKE','%'.$inputs['findByUserName'].'%');
+                }
+            })
+            ->paginate(5);
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
+        $seller_ids = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))->pluck('id');
+        $orders = Order::whereIn('shop_id', Shop::whereIn('user_id',$seller_ids)->pluck('id'))->where('active1',1)->get();
+
+        return view('sales.censoring',compact('regions','provinces','cities','province_id',
+        'city_id','a','users','orders'));
     }
 
+    public function censored(Request $request)
+    {
+        if (Gate::denies('manage_sale',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $inputs = $request->has('select')?json_decode($request->input('select',true)):$request->all();
+        $a = $inputs;
+        $users = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))
+            ->where(function($query)use($inputs){
+                if(isset($inputs['findByUserName'])){
+                    $query->where('name','LIKE','%'.$inputs['findByUserName'].'%');
+                }
+            })
+            ->paginate(5);
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
+        $seller_ids = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))->pluck('id');
+        $orders = Order::whereIn('shop_id', Shop::whereIn('user_id',$seller_ids)->pluck('id'))->where('active1',2)->get();
+
+        return view('sales.censored',compact('regions','provinces','cities','province_id',
+            'city_id','a','users','orders'));
+    }
+
+    public function fail(Request $request)
+    {
+        if (Gate::denies('manage_sale',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $inputs = $request->has('select')?json_decode($request->input('select',true)):$request->all();
+        $a = $inputs;
+        $users = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))
+            ->where(function($query)use($inputs){
+                if(isset($inputs['findByUserName'])){
+                    $query->where('name','LIKE','%'.$inputs['findByUserName'].'%');
+                }
+            })
+            ->paginate(5);
+        $regions = Region::all()->pluck('name','id');
+        $provinces = Province::all()->pluck('name','id');
+        $cities = City::all()->pluck('name','id');
+        $province_id = 1;
+        $city_id = 169;
+        $seller_ids = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))->pluck('id');
+        $orders = Order::whereIn('shop_id', Shop::whereIn('user_id',$seller_ids)->pluck('id'))->where('active1',3)->get();
+
+        return view('sales.failed',compact('regions','provinces','cities','province_id',
+            'city_id','a','users','orders'));
+    }
 
 }

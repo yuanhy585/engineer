@@ -94,8 +94,8 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/dmOrders/order_in_censor">{{trans('management.in_censoring')}}</a></li>
-                            <li><a href="">{{trans('management.censored')}}</a></li>
-                            <li><a href="">{{trans('management.fail')}}</a></li>
+                            <li><a href="/dmOrders/order_censored">{{trans('management.censored')}}</a></li>
+                            <li><a href="/dmOrders/order_failed">{{trans('management.fail')}}</a></li>
                             <li><a href="/dmOrders/all">{{trans('management.all')}}</a></li>
                         </ul>
                     </li>
