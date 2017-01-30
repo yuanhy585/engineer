@@ -146,13 +146,22 @@ class SaleController extends Controller
         return view('sales.saleIndex',compact('users'));
     }
 
-    public function all()
+    public function all(Request $request)
     {
         if (Gate::denies('manage_sale',Auth::user()))
         {
             return Redirect::back();
         }
 
+        $inputs = $request->has('select')?json_decode($request->input('select',true)):$request->all();
+        $a = $inputs;
+        $users = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))
+            ->where(function($query)use($inputs){
+                if(isset($inputs['findByUserName'])){
+                    $query->where('name','LIKE','%'.$inputs['findByUserName'].'%');
+                }
+            })
+            ->paginate(5);
         $regions = Region::all()->pluck('name','id');
         $provinces = Province::all()->pluck('name','id');
         $cities = City::all()->pluck('name','id');
@@ -163,7 +172,7 @@ class SaleController extends Controller
 
 
         return view('sales.dmOrders',compact('regions','provinces','cities','province_id',
-            'city_id','orders'));
+            'city_id','orders','a','users'));
     }
 
 

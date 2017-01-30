@@ -17,7 +17,7 @@
                 <div class="search">
                     <input type="text" name="findByUserName" class="form-control"
                            placeholder="{{trans('sale.input_shop_user')}}" style="margin:10px 0;"
-                           value=""/>
+                           value="{{isset($a['findByUserName'])?$a['findByUserName']:null}}"/>
                     <button type="submit" class="btn btn-primary">
                         {{trans('sale.search')}}
                     </button>
@@ -58,6 +58,7 @@
                         <td>{{$order->shop->user->phone}}</td>
                         <td>{{$order->shop->address}}</td>
                         <td>
+                            //感觉第一个where应该是whereIn()
                             {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
                             ->where('material_id',1)->pluck('material_id')))}}
                         </td>
@@ -102,6 +103,9 @@
                 @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="pagination text-center">
+            {!! $users->appends(['select'=>isset($a)?json_encode($a):""])->render() !!}
         </div>
     </div>
 @stop
