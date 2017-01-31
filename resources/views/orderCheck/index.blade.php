@@ -74,6 +74,11 @@
                             <td>{{trans('order.independent_counter')}}</td>
                             <td>{{trans('order.luxury_section')}}</td>
                             <td>{{trans('order.counter_packing')}}</td>
+                            <td>收银台（个）</td>
+                            <td>橱窗（个）</td>
+                            <td>包柱（个）</td>
+                            <td>遮阳卷帘（个）</td>
+                            <td>其他（个）</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,9 +91,38 @@
                             <td>{{$order->shop->user->name}}</td>
                             <td>{{$order->shop->user->phone}}</td>
                             <td>{{$order->shop->address}}</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->where('material_id',1)->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->where('material_id',2)->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->where('material_id',3)->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->whereIn('material_id',[4,5])->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->whereIn('material_id',[6,7])->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->where('material_id',8)->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->whereIn('material_id',[9,10])->pluck('material_id')))}}
+                            </td>
+                            <td>
+                                {{ count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
+                                ->whereIn('material_id',[11,12,13,14,15])->pluck('material_id')))}}
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
