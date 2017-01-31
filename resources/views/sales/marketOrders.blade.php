@@ -57,37 +57,28 @@
                         <td>{{$order->shop->user->phone}}</td>
                         <td>{{$order->shop->address}}</td>
                         <td>
-                            {{--感觉第一个where应该是whereIn()--}}
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->where('material_id',1)->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->where('material_id',1)->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->where('material_id',2)->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->where('material_id',2)->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->where('material_id',3)->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->where('material_id',3)->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->whereIn('material_id',[4,5])->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->whereIn('material_id',[4,5])->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->whereIn('material_id',[6,7])->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->whereIn('material_id',[6,7])->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->where('material_id',8)->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->where('material_id',8)->get())}}
                         </td>
                         <td>
-                            {{count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->whereIn('material_id',[9,10])->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->whereIn('material_id',[9,10])->get())}}
                         </td>
                         <td>
-                            {{ count(\App\Material::where('id',\App\MaterialOrder::where('order_id',$order->id)
-                            ->whereIn('material_id',[11,12,13,14,15])->pluck('material_id')))}}
+                            {{count(\App\MaterialOrder::where('order_id',$order->id)->whereIn('material_id',[11,12,13,14,15])->get())}}
                         </td>
                         <td>{{$order->expectPrice}}</td>
                         @if($order->active2 == 1)
