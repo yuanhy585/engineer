@@ -44,6 +44,7 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('orders/{id}/material_add','OrderController@materialAdd');
         Route::post('orders/{id}/material_store','OrderController@materialStore');
         Route::post('orders/{id}/update','OrderController@update');
+
         //material_order operation
         Route::get('material_order/{id}/edit', 'OrderController@materialEdit');
         Route::post('materialOrder/{id}/update','OrderController@materialUpdate');
@@ -55,14 +56,24 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('user/sale/{id}/delete','SaleController@destroy');
         Route::get('mySale','SaleController@saleIndex');
 
+        //管理部人员对订单进行查看审核
         Route::get('dmOrders/all','SaleController@all');
         Route::get('dmOrders/order_in_censor','SaleController@censor');
         Route::get('dmOrders/order_censored','SaleController@censored');
         Route::get('dmOrders/order_failed','SaleController@fail');
+
+        //市场部人员对订单进行查看审核
         Route::get('orderMarketCensoring','SaleController@marketCensor');
         Route::get('orderMarketCensored','SaleController@marketCensored');
         Route::get('orderMarketFail','SaleController@failOrder');
         Route::get('orderMarketAll','SaleController@getMarketOrders');
+
+        //项目部人员对工程部进行订单分配
+        Route::get('distribution','OrderController@getEngineer');
+        Route::get('engineer/{user_id}/orderAssigned','OrderController@assignedOrder');
+        Route::get('engineer/{user_id}/orderUnassigned','OrderController@distributeOrder');
+        Route::post('engineer/{user_id}/assignedOrderStore','OrderController@storeAssignedOrder');
+        Route::post('user/{user_id}/cancelAssignedOrder','OrderController@cancelAssignedOrder');
 
         //route for province data import
         Route::get('province','ImportController@provinceImport');

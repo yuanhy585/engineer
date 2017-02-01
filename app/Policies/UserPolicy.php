@@ -109,5 +109,13 @@ class UserPolicy
             return false;
     }
 
+    public function distribute_order(User $user)
+    {
+        if($user->department_id > 4)
+            return true;
+        else
+            return false;
+    }
+
     
 }

@@ -36,7 +36,7 @@
                 <li class="active"><a href="/">{{trans('home.home')}}</a></li>
                 @if(Auth::user()->department_id == 5)
                 <li><a href="/order_check">{{trans('user.order_check')}}</a></li>
-                <li><a href="">{{trans('user.order_distribution')}}</a></li>
+                <li><a href="/distribution">{{trans('user.order_distribution')}}</a></li>
                 <li><a href="">{{trans('user.price_management')}}</a></li>
                 <li><a href="/shops">{{trans('shop.shop_management')}}</a></li>
                 <li class="dropdown">

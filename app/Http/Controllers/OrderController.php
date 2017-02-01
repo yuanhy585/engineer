@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\EmOrders;
 use App\Material;
 use App\MaterialOrder;
 use App\User;
@@ -39,8 +40,9 @@ class OrderController extends Controller
 	        }
 //	        $id = Shop::all()->pluck('id')->first();//不要这句,直接用传过来的shop->id
             $order = Order::where('shop_id',$id)->first();
+            $shop = Shop::where('id',$id)->first();
 
-	        return view('orders.create',compact('id','order'));
+	        return view('orders.create',compact('id','order','shop'));
 	    }
 
 
@@ -201,6 +203,87 @@ class OrderController extends Controller
         $material_order->delete();
 
         return back();
+    }
+
+    public function getEngineer()
+    {
+        if(Gate::denies('distribute_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $engineers = User::where('department_id',4)->get();
+        return view('orders.engineer',compact('engineers'));
+    }
+
+    public function assignedOrder($user_id)
+    {
+        if (Gate::denies('distribute_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $order_ids = EmOrders::where('user_id',$user_id)->pluck('order_id');
+        $orders = Order::whereIn('id',$order_ids)->get();
+        return view('orders.assignedOrders',compact('orders','user_id'));
+    }
+
+    public function cancelAssignedOrder(Request $request,$user_id)
+    {
+        if (Gate::denies('distribute_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+//        只获取保存内容的某一部分，用input()，参看文档http请求。写input名字时不可再加[]符号
+        $selected_ids = $request->input('assignedOrders');
+//        传过来的是一个数组，包含多个值。
+        foreach ($selected_ids as $selected_id)
+        {
+            $assignedOrder = EmOrders::where('user_id',$user_id)->where('order_id',$selected_id)->first();
+            if ($assignedOrder)
+            {
+                $assignedOrder->delete();
+            }
+        }
+
+        return back();
+    }
+
+    public function distributeOrder($user_id)
+    {
+        if(Gate::denies('distribute_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $assignedOrder_ids = EmOrders::all()->pluck('order_id');
+        $orders = Order::where('needMeasure', 1)->where('needInstall', 1)
+                    ->whereNotIn('id',$assignedOrder_ids)
+                    ->get();
+        return view('orders.distribution',compact('user_id','orders'));
+    }
+
+    public function storeAssignedOrder(Request $request, $user_id)
+    {
+        if (Gate::denies('distribute_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+        $order_ids = $request->input('assignOrders');
+        foreach ($order_ids as $order_id)
+        {
+            $assignedOrder = EmOrders::where('user_id',$user_id)->where('order_id',$order_id)->first();
+            if (!$assignedOrder)
+            {
+                $em_order = new EmOrders();
+                $em_order->order_id = $order_id;
+                $em_order->user_id = $user_id;
+                $em_order->save();
+            }
+        }
+
+        return back();
+
     }
 
     public function ajaxTN(Request $request)
