@@ -3,7 +3,11 @@
 <div class="container">
 	<div class="row">
 		<div class="page-title" style="font-size: 30px;text-align: center;">
-			{{$order->shop->name}}
+			@if(count($order) == 0)
+				{{$shop->name}}
+			@else
+				{{$order->shop->name}}
+			@endif
 		</div>
 		<br/><hr/>
 	</div>
