@@ -54,7 +54,7 @@
                     <td>{{$order->shop->name}}</td>
                     <td>{{$order->shop->user->name}}</td>
                     <td>{{$order->shop->user->phone}}</td>
-                    <td>{{$order->shop->Address}}</td>
+                    <td>{{$order->shop->address}}</td>
                     <td>
                         {{count(\App\MaterialOrder::where('order_id',$order->id)->where('material_id',1)->get())}}
                     </td>
