@@ -170,7 +170,6 @@ class SaleController extends Controller
         $seller_ids = User::whereIn('id',DmUser::where('dm_id',Auth::user()->id)->pluck('user_id'))->pluck('id');
         $orders = Order::whereIn('shop_id', Shop::whereIn('user_id',$seller_ids)->pluck('id'))->get();
 
-
         return view('sales.dmOrders',compact('regions','provinces','cities','province_id',
             'city_id','orders','a','users'));
     }
@@ -261,13 +260,26 @@ class SaleController extends Controller
             'city_id','a','users','orders'));
     }
 
+    public function checkStatus(Request $request,$order_id)
+    {
+        if (Gate::denies('manage_sale',Auth::user()))
+        {
+            return Redirect::back();
+        }
+        $order = Order::where('id',$order_id)->first();
+        $input = $request->input('active1');
+        $order->active1 = $input;
+        $order->save();
+
+        return back();
+    }
+
     public function marketCensor()
     {
         if (Gate::denies('censor_order',Auth::user()))
         {
             return Redirect::back();
         }
-
 
 //        $regions = Region::all()->pluck('name','id');
 //        $provinces = Province::all()->pluck('name','id');
@@ -314,6 +326,22 @@ class SaleController extends Controller
 
         $orders = Order::where('active1',2)->get();
         return view('sales.marketOrders',compact('orders'));
+    }
+
+    public function checkActive2(Request $request, $order_id)
+    {
+        if (Gate::denies('censor_order',Auth::user()))
+        {
+            return Redirect::back();
+        }
+
+        $order = Order::where('id',$order_id)->first();
+        $input = $request->input('active2');
+        $order->active2 = $input;
+        $order->save();
+
+        return back();
+
     }
 
 }

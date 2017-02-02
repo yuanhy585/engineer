@@ -61,12 +61,14 @@ Route::group(['middleware'=>'language'],function(){
         Route::get('dmOrders/order_in_censor','SaleController@censor');
         Route::get('dmOrders/order_censored','SaleController@censored');
         Route::get('dmOrders/order_failed','SaleController@fail');
+        Route::post('order/{order_id}/orderStatusCheck','SaleController@checkStatus');
 
         //市场部人员对订单进行查看审核
         Route::get('orderMarketCensoring','SaleController@marketCensor');
         Route::get('orderMarketCensored','SaleController@marketCensored');
         Route::get('orderMarketFail','SaleController@failOrder');
         Route::get('orderMarketAll','SaleController@getMarketOrders');
+        Route::post('order/{order_id}/orderActive2Check','SaleController@checkActive2');
 
         //项目部人员对工程部进行订单分配
         Route::get('distribution','OrderController@getEngineer');

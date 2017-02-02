@@ -110,9 +110,9 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/orderMarketCensoring">待审核</a></li>
-                                <li><a href="/orderMarketCensored">审核通过订单</a></li>
-                                <li><a href="/orderMarketFail">审核未通过订单</a></li>
-                                <li><a href="/orderMarketAll">所有订单</a></li>
+                                <li><a href="/orderMarketCensored">审核通过</a></li>
+                                <li><a href="/orderMarketFail">审核未通过</a></li>
+                                <li><a href="/orderMarketAll">全部</a></li>
                             </ul>
                         </li>
                         <li><a href="">订单详情</a></li>
