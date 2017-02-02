@@ -43,6 +43,8 @@
                     <td>遮阳卷帘（个）</td>
                     <td>其他（个）</td>
                     <td>预估总金额</td>
+                    <td>Dm审核状态</td>
+                    <td>Mm审核状态</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -80,6 +82,58 @@
                             {{count(\App\MaterialOrder::where('order_id',$order->id)->whereIn('material_id',[11,12,13,14,15])->get())}}
                         </td>
                         <td>{{$order->expectPrice}}</td>
+                        <td>
+                            @if($order->active1 == 1)
+                                待审核
+                            @elseif($order->active1 == 2)
+                                审核通过
+                            @elseif($order->active1 == 3)
+                                审核未通过
+                            @endif
+                        </td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal"
+                                    data-target="#changeCensorStatus">
+                                审核未通过
+                            </button>
+                            <form action="/order/{{$order->id}}/orderActive2Check" method="post">
+                                {{csrf_field()}}
+                                <div class="modal fade" id="changeCensorStatus" tabindex="-1" role="dialog"
+                                     aria-labelledby="statusLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="statusLabel">
+                                                    审核订单
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group form-inline text-center">
+                                                    <label for="active2">订单审核状态：</label>
+                                                    <select type="text" name="active2" id="active2" class="form-control">
+                                                        <option value="1">待审核</option>
+                                                        <option value="2">审核通过</option>
+                                                        <option value="3" selected>审核未通过</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    关闭
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">
+                                                    提交更改
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
