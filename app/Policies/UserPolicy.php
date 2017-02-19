@@ -117,5 +117,20 @@ class UserPolicy
             return false;
     }
 
+    public function measure_order(User $user)
+    {
+        if ($user->department_id == 4)
+            return true;
+        else
+            return false;
+    }
+
+    public function install_order(User $user)
+    {
+        if ($user->department_id == 4)
+            return true;
+        else
+            return false;
+    }
     
 }

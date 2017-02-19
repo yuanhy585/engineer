@@ -310,6 +310,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
     public static $classMap = array (
         'AddColumnToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_24_120616_add_column_to_users_table.php',
         'AddColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+        'AddTwoColumnsToEmOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_04_062059_add_two_columns_to_em_orders_table.php',
         'AddTwoColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_29_050208_add_two_columns_to_users_table.php',
         'ChangeColumnInOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_144030_change_column_in_orders_table.php',
         'ChangeColumnInShopsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_23_060623_change_column_in_shops_table.php',
@@ -319,6 +320,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
         'CreateDepartmentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_18_060815_create_departments_table.php',
         'CreateDmUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_14_123439_create_dm_users_table.php',
         'CreateEmOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_050816_create_em_orders_table.php',
+        'CreateImagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_04_225405_create_images_table.php',
         'CreateLanguagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_071325_create_languages_table.php',
         'CreateMaterialOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_140711_create_material_orders_table.php',
         'CreateMaterialsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_22_053858_create_materials_table.php',

@@ -118,6 +118,29 @@
                         <li><a href="">订单详情</a></li>
                 @endif
 
+                @if(Auth::user()->department_id == 4)
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown">
+                            订单测量情况<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/measuredOrders">已测量订单</a></li>
+                            <li><a href="/inMeasuringOrders">未测量订单</a></li>
+                            <li><a href="/measureRelatedOrders">全部</a></li>
+                        </ul>
+                    </li>
+                        <li class="dropdown">
+                            <a href="" data-toggle="dropdown">
+                                订单安装情况<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/installedOrders">已安装订单</a></li>
+                                <li><a href="/inInstallingOrders">未安装订单</a></li>
+                                <li><a href="/installRelatedOrders">全部</a></li>
+                            </ul>
+                        </li>
+                @endif
+
                 @endif
             </ul>
 

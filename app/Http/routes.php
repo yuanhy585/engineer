@@ -77,6 +77,15 @@ Route::group(['middleware'=>'language'],function(){
         Route::post('engineer/{user_id}/assignedOrderStore','OrderController@storeAssignedOrder');
         Route::post('user/{user_id}/cancelAssignedOrder','OrderController@cancelAssignedOrder');
 
+        //工程部人员对订单进行处理
+        Route::get('measuredOrders','MeasureInstallController@getMeasured');
+        Route::get('inMeasuringOrders','MeasureInstallController@waitMeasure');
+        Route::get('measureRelatedOrders','MeasureInstallController@measure');
+        Route::get('installedOrders','MeasureInstallController@getInstalled');
+        Route::get('inInstallingOrders','MeasureInstallController@waitInstall');
+        Route::get('installRelatedOrders','MeasureInstallController@install');
+        Route::post('order/{order_id}/imageStore','MeasureInstallController@storeImage');
+
         //route for province data import
         Route::get('province','ImportController@provinceImport');
         Route::post('province/data_import','ImportController@provinceReceive');
