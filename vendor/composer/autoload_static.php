@@ -14,6 +14,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'c7a30ad2fd3d198cdc58d9fb1f8a7ed4' => __DIR__ . '/../..' . '/app/function.php',
@@ -22,6 +23,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
+            'phpseclib\\' => 10,
             'phpDocumentor\\Reflection\\' => 25,
         ),
         'X' => 
@@ -97,6 +99,10 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
     );
 
     public static $prefixDirsPsr4 = array (
+        'phpseclib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -310,6 +316,7 @@ class ComposerStaticInit4e5348bab24722c3f971574e30fead2e
     public static $classMap = array (
         'AddColumnToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_24_120616_add_column_to_users_table.php',
         'AddColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_042902_add_columns_to_users_table.php',
+        'AddForeignToShopsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_24_015147_add_foreign_to_shops_table.php',
         'AddTwoColumnsToEmOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_04_062059_add_two_columns_to_em_orders_table.php',
         'AddTwoColumnsToUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_29_050208_add_two_columns_to_users_table.php',
         'ChangeColumnInOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_144030_change_column_in_orders_table.php',

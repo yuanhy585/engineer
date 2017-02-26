@@ -2,8 +2,10 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use  phpseclib\Crypt\RSA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Lang;
 
 trait AuthenticatesUsers
@@ -56,6 +58,31 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
+//        $input['password'] = $request->input('password');
+//
+//        $private = "-----BEGIN RSA PRIVATE KEY-----
+//                MIICXAIBAAKBgQDA5Ehy7A/nZ0CB+xikxods0MzID8OQfJof4nCiKAa7dEv4Z/FA5KpxVSPj+ZQj X+zdm7QLHfqOGTz6ac1eOtmBCmm1VtNh5cxRQwR00GV+PTpuaUjOghL/upcJ8RlC2UAkBMIlw+7O 3rZ+B5ykHSWF2fWyX9uk7N9Ls4LUjDLs7QIDAQABAoGAFp/wG4Kyztqeh2BzYIhkxA+tpV2r+5uR 3GGMAokdWQloC8ftVUY887Qf1JKmnIuY1dl4gcFPbTFqpJiaXQ4cCsFWMjYKcVrTZj38QaWp/ikc 4ZEuYfV6dr2FDUaQaIYlqPvCxmrc7eISHDZEvPNT9LUZcAtxzeJMTIXrbf6T9MECQQD0nH2fGglp FweVVjec/fp2coJuxiI3rtWuLP0Gy3a95d/UbSTxw+gXgVdTTSZy2FfHsTrc4J49jAbTYvVHqPj9 AkEAyd9Zep/jlbGOPIim+UTzvNJsQnJRC4jS1BsYjP/digMkNDQG/nt4R2QZVlTHXM7+abdbeXYA yW3AOPHzP8++sQJBAMJHmK7JKzhAhlFiDQGv50I0aMw6qeq3/hc8vCqtZz4kWcaKeZFcG/avUABl gmgs1GtSpIHSFVyk3rb+HfowhrECQBRFdmHG7n6YrtTLUCEV2HfslWxyuEq1OZ6M/gEirGdwe1E2 rEEfuutIVPcDWmWqb4fEHs5qmBeiCrxtJ2UQAnECQCoUFle3/XAll4sACiV5/Endd7DKCM1g6jQd rtCbvzHh/j6P3sZEGuTZcuDWYmtNVUy6E2HHfNNwztZxVEJZqW4=
+//            -----END RSA PRIVATE KEY-----";
+//
+//        $rsa = new RSA();
+//        $rsa->loadkey($private);
+//        if (!openssl_pkey_get_private($rsa))
+//        {
+//            die('Loading Private Key failed');
+//        }else
+//        {
+//            $privateKey = openssl_pkey_get_private($rsa);
+//        }
+//
+//        //Decrypt
+//        $decrypted_text = "";
+//        if (!openssl_private_decrypt(base64_decode($_POST['password']), $decrypted_text, $privateKey))
+//        {
+//            die('Failed to decrypt data');
+//        }
+//
+//        $input['password'] = $decrypted_text;
+
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
